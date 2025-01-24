@@ -1,0 +1,11 @@
+main{
+    flex-grow: 1;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
