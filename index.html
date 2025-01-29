@@ -3,18 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>L'eccomercè</title>
-    <link rel="stylesheet" href="styles/default.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="styles/default.css" rel="stylesheet">
+    <link rel="icon" type="image/vnd.icon" href="images/favicon.ico">
+    <title>Aeternum</title>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <header></header>
-    <main>
-        <h1>Content</h1>
+    <main class="flex-grow-1">
+        <!-- Hero Section -->
+        <section class="hero bg-dark text-white hero-bg mb-5">
+            <div class="text-center hero-opacity py-5">
+                <h1 class="display-4">Benvenuti su Aeternum</h1>
+                <p class="lead">Scopri la nostra collezione di orologi esclusivi. Eleganza senza tempo.</p>
+                <a href="#orologi-lusso" class="btn btn-light btn-lg">Esplora Ora</a>
+            </div>
+        </section>
+
+        <!-- Card Section -->
+        <section id="orologi-lusso" class="mb-5 container">
+            <h2 class="text-center mb-4">Le nostre collezioni</h2>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
+                <!-- Card 1: Orologi di Lusso -->
+                <div class="col d-flex justify-content-center">
+                    <div class="card h-100 shadow-sm">
+                        <img src="images/eleganti.jpeg" class="card-img-top" alt="Orologi di Lusso">
+                        <div class="card-body">
+                            <h5 class="card-title">Orologi di Lusso</h5>
+                            <p class="card-text">Scopri i nostri orologi di lusso per un tocco di classe e raffinatezza.</p>
+                            <a href="orologi.html" class="btn btn-primary">Scopri di più</a>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Card 2: Orologi Sportivi -->
+                <div class="col d-flex justify-content-center">
+                    <div class="card h-100 shadow-sm">
+                        <img src="images/sportivi.jpeg" class="card-img-top" alt="Orologi Sportivi">
+                        <div class="card-body">
+                            <h5 class="card-title">Orologi Sportivi</h5>
+                            <p class="card-text">Affronta ogni sfida con stile grazie ai nostri orologi sportivi di alta qualità.</p>
+                            <a href="sport.html" class="btn btn-primary">Scopri di più</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
     </main>
     <footer></footer>
+
+    <!-- Script inclusi -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="functions/main.js"></script>
-    <script src="functions/loadBase.js"></script>
+    <script src="functions/colormode.js"></script>
+    <script src="functions/header.js"></script>
+    <script src="functions/footer.js"></script>
 </body>
 </html>
