@@ -4,6 +4,7 @@
         "modello": "Forerunner 945",
         "descrizione": "Orologio GPS per la corsa con funzioni avanzate di allenamento e mappe integrate.",
         "prezzo": "599.99",
+        "images": ["images/1.jpeg", "images/2.jpeg"],
         "varianti": [
             {
                 "tipo": "colore",
@@ -19,21 +20,24 @@
         "modello": "9 Baro",
         "descrizione": "Orologio sportivo con batteria a lunga durata e altimetro barometrico.",
         "prezzo": "499.99",
-        "varianti": []
+        "varianti": [],
+        "images": ["images/3.jpeg", "images/4.jpeg"]
     },
     "s3": {
         "marca": "Polar",
         "modello": "Vantage V2",
         "descrizione": "Smartwatch multisport con GPS e monitoraggio avanzato del recupero.",
         "prezzo": "479.99",
-        "varianti": []
+        "varianti": [],
+        "images": ["images/5.jpeg"]
     },
     "s4": {
         "marca": "Coros",
         "modello": "Vertix 2",
         "descrizione": "Orologio ultraresistente con navigazione avanzata e grande autonomia.",
         "prezzo": "699.99",
-        "varianti": []
+        "varianti": [],
+        "images": ["images/7.jpeg"]
     },
     "s5": {
         "marca": "Garmin",
@@ -48,28 +52,32 @@
                     ["nero", "#000000"]
                 ]
             }
-        ]
+        ],
+        "images": ["images/8.jpeg", "images/9.jpeg"]
     },
     "s6": {
         "marca": "Amazfit",
         "modello": "T-Rex Pro",
         "descrizione": "Smartwatch rugged con GPS e certificazione militare.",
         "prezzo": "179.99",
-        "varianti": []
+        "varianti": [],
+        "images": ["images/6.jpeg"]
     },
     "s7": {
         "marca": "Casio",
         "modello": "G-Shock GBD-H1000",
         "descrizione": "Orologio sportivo con cardiofrequenzimetro e GPS integrato.",
         "prezzo": "399.99",
-        "varianti": []
+        "varianti": [],
+        "images": ["images/10.jpeg"]
     },
     "s8": {
         "marca": "Fitbit",
         "modello": "Sense 2",
         "descrizione": "Smartwatch avanzato con monitoraggio dello stress e della salute.",
         "prezzo": "299.99",
-        "varianti": []
+        "varianti": [],
+        "images": ["images/11.jpeg"]
     },
     "s9": {
         "marca": "Apple",
@@ -81,13 +89,7 @@
                 "tipo": "taglia",
                 "valori": ["S", "M", "L"]
             }
-        ]
-    },
-    "s10": {
-        "marca": "Samsung",
-        "modello": "Galaxy Watch 5 Pro",
-        "descrizione": "Smartwatch sportivo con GPS e monitoraggio avanzato della salute.",
-        "prezzo": "429.99",
-        "varianti": []
+        ],
+        "images": ["images/12.jpeg"]
     }
 }

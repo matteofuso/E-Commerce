@@ -1,0 +1,95 @@
+{
+    "l1": {
+        "marca": "Rolex",
+        "modello": "Submariner",
+        "descrizione": "Orologio di lusso subacqueo con cassa in acciaio e lunetta in ceramica.",
+        "prezzo": "10999.99",
+        "images": ["images/7.jpeg", "images/9.jpeg"],
+        "varianti": [
+            {
+                "tipo": "colore",
+                "valori": [
+                    ["nero", "#000000"],
+                    ["verde", "#008000"]
+                ]
+            }
+        ]
+    },
+    "l2": {
+        "marca": "Omega",
+        "modello": "Speedmaster Professional",
+        "descrizione": "L'iconico orologio indossato dagli astronauti sulla Luna.",
+        "prezzo": "7499.99",
+        "varianti": [],
+        "images": ["images/1.jpeg", "images/8.jpeg"]
+    },
+    "l3": {
+        "marca": "Tag Heuer",
+        "modello": "Carrera Chronograph",
+        "descrizione": "Cronografo sportivo di lusso ispirato al mondo delle corse automobilistiche.",
+        "prezzo": "5999.99",
+        "varianti": [],
+        "images": ["images/2.jpeg"]
+    },
+    "l4": {
+        "marca": "Patek Philippe",
+        "modello": "Nautilus",
+        "descrizione": "Orologio elegante con design iconico e meccanismo automatico.",
+        "prezzo": "39999.99",
+        "varianti": [],
+        "images": ["images/12.jpeg"]
+    },
+    "l5": {
+        "marca": "Audemars Piguet",
+        "modello": "Royal Oak",
+        "descrizione": "Orologio di lusso con cassa in acciaio e design sportivo raffinato.",
+        "prezzo": "29999.99",
+        "varianti": [
+            {
+                "tipo": "colore",
+                "valori": [
+                    ["blu", "#0000FF"],
+                    ["grigio", "#808080"]
+                ]
+            }
+        ],
+        "images": ["images/10.jpeg", "images/4.jpeg"]
+    },
+    "l6": {
+        "marca": "Cartier",
+        "modello": "Santos",
+        "descrizione": "Orologio di lusso con quadrante raffinato e cassa in oro rosa.",
+        "prezzo": "18999.99",
+        "varianti": [],
+        "images": ["images/5.jpeg"]
+    },
+    "l7": {
+        "marca": "Breitling",
+        "modello": "Navitimer B01",
+        "descrizione": "Cronografo di lusso con movimento di manifattura e scala logaritmica.",
+        "prezzo": "8499.99",
+        "varianti": [],
+        "images": ["images/11.jpeg"]
+    },
+    "l8": {
+        "marca": "IWC",
+        "modello": "Portugieser Chronograph",
+        "descrizione": "Cronografo di lusso con design classico e movimento automatico.",
+        "prezzo": "7999.99",
+        "varianti": [],
+        "images": ["images/6.jpeg"]
+    },
+    "l9": {
+        "marca": "Vacheron Constantin",
+        "modello": "Overseas",
+        "descrizione": "Orologio sportivo di lusso con movimento di alta precisione.",
+        "prezzo": "25999.99",
+        "varianti": [
+            {
+                "tipo": "taglia",
+                "valori": ["M", "L"]
+            }
+        ],
+        "images": ["images/3.jpeg"]
+    }
+}

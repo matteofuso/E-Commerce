@@ -5,16 +5,16 @@ const pages = [
         url: 'index.html'
     },
     {
-        name: 'Shop',
-        url: 'shop.html'
+        name: "Orologi Sportivi",
+        url: "prodotti.html?category=sport",
     },
     {
-        name: 'About',
-        url: 'about.html'
+        name: "Orologi di Lusso",
+        url: "prodotti.html?category=lusso",
     },
     {
-        name: 'Contact',
-        url: 'contact.html'
+        name: "Carello",
+        url: "carrello.html",
     }
 ]
 
@@ -97,14 +97,20 @@ header.innerHTML=`<div data-bs-theme="dark" class="bg-body shadow-lg sticky-top"
     <nav class="navbar navbar-expand-lg bg-body-tertiary py-0">
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbar">
-                <ul class="navbar-nav my-3">
-                    <li class="nav-item mx-2"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item mx-2"><a class="nav-link" href="orologi.html">Orologi di Lusso</a></li>
-                    <li class="nav-item mx-2"><a class="nav-link" href="vintage.html">Orologi vintage</a></li>
-                    <li class="nav-item mx-2"><a class="nav-link" href="sport.html">Orologi sportivi</a></li>
-                    <li class="nav-item mx-2"><a class="nav-link" href="cart.html">Carrello</a></li>
-                </ul>
+                <ul class="navbar-nav my-3" id="navbar-nav"></ul>
             </div>
         </div>
     </nav>
 </div>`;
+
+const navbar = document.getElementById('navbar-nav');
+for (const page of pages) {
+    const li = document.createElement('li');
+    li.classList.add('nav-item', 'mx-2');
+    const a = document.createElement('a');
+    a.classList.add('nav-link');
+    a.href = page.url;
+    a.textContent = page.name;
+    li.appendChild(a);
+    navbar.appendChild(li);
+}
