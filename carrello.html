@@ -10,14 +10,83 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
     <header></header>
-    <main class="flex-grow-1">
-        
-        <h1>Hello World</h1>
-        
+    <main class="container my-4 flex-grow-1">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Prodotto</th>
+                    <th>Colore</th>
+                    <th>Taglia</th>
+                    <th>Quantità</th>
+                    <th>Prezzo</th>
+                    <th>Totale</th>
+                    <th>Rimuovi</th>
+                </tr>
+            </thead>
+            <tbody id="cart-body">
+                <!-- Prodotti caricati dinamicamente -->
+            </tbody>
+        </table>
+        <h3 class="text-end">Totale: €<span id="cart-total">0.00</span></h3>
+        <button class="btn btn-primary" onclick="checkout()">Procedi al Checkout</button>
     </main>
     <footer></footer>
 
     <!-- Script inclusi -->
+    <script>
+        async function loadCart() {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const cartBody = document.getElementById("cart-body");
+            const cartTotal = document.getElementById("cart-total");
+            cartBody.innerHTML = "";
+            let total = 0;
+            
+            for (let item of cart) {
+                const file = item.id.startsWith('s') ? 'sport.json' : 'lusso.json';
+                const response = await fetch(`data/${file}`);
+                const data = await response.json();
+                const prodotto = data.find(p => p.id === item.id);
+                
+                if (!prodotto) continue;
+                
+                const row = document.createElement("tr");
+                const itemTotal = parseFloat(prodotto.prezzo) * item.quantity;
+                total += itemTotal;
+                
+                row.innerHTML = `
+                    <td>${prodotto.marca} ${prodotto.modello}</td>
+                    <td>${item.color}</td>
+                    <td>${item.size}</td>
+                    <td>
+                        <input type="number" min="1" value="${item.quantity}" class="form-control" onchange="updateQuantity('${item.id}', this.value)">
+                    </td>
+                    <td>€${parseFloat(prodotto.prezzo).toFixed(2)}</td>
+                    <td>€${itemTotal.toFixed(2)}</td>
+                    <td><button class="btn btn-danger btn-sm" onclick="removeItem('${item.id}')">X</button></td>
+                `;
+                cartBody.appendChild(row);
+            }
+            cartTotal.textContent = total.toFixed(2);
+        }
+
+        function updateQuantity(id, quantity) {
+            let cart = JSON.parse(localStorage.getItem("cart"));
+            let item = cart.find(item => item.id === id);
+            if (item) {
+                item.quantity = parseInt(quantity);
+                localStorage.setItem("cart", JSON.stringify(cart));
+                loadCart();
+            }
+        }
+
+        function removeItem(id) {
+            let cart = JSON.parse(localStorage.getItem("cart"));
+            cart = cart.filter(item => item.id !== id);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            loadCart();
+        }
+        loadCart();
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="functions/colormode.js"></script>
     <script src="functions/header.js"></script>

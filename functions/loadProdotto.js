@@ -1,82 +1,56 @@
-// Funzione per caricare i dati del prodotto
-async function loadProductData() {
-    // Simuliamo un fetch per ottenere il JSON (puoi sostituirlo con un URL vero)
-    const jsonData = {
-        "l1": {
-            "marca": "Rolex",
-            "modello": "Submariner",
-            "descrizione": "Orologio di lusso subacqueo con cassa in acciaio e lunetta in ceramica.",
-            "prezzo": "10999.99",
-            "images": ["images/7.jpeg", "images/9.jpeg"],
-            "varianti": [
-                {
-                    "tipo": "colore",
-                    "valori": [
-                        ["nero", "#000000"],
-                        ["verde", "#008000"]
-                    ]
-                }
-            ]
-        }
-    };
+async function loadProdotto(){
+    const params = new URLSearchParams(window.location.search);
+    const idElement = document.getElementById('id');
+    const id = params.get('id');
+    idElement.value = id;
+    
+    const file = id.startsWith('s') ? 'sport.json' : 'lusso.json';
+    const response = await fetch(`data/${file}`);
+    const data = await response.json();
 
-    // Prendiamo i dati del prodotto
-    const product = jsonData.l1;
+    const prodotto = data.find(p => p.id === id);
+    if (!prodotto) {
+        console.error('Prodotto non trovato');
+        return;
+    }
 
-    // Aggiorniamo il titolo, la descrizione, il prezzo
-    document.getElementById('productDetails').innerHTML = `
-        <h2>${product.marca} ${product.modello}</h2>
-        <p><strong>Descrizione:</strong> ${product.descrizione}</p>
-        <p><strong>Prezzo:</strong> €${parseFloat(product.prezzo).toLocaleString()}</p>
-
-        <!-- Selezione colore -->
-        <div class="mb-3">
-            <label class="form-label">Seleziona Colore</label>
-            <div class="color-picker-container" id="colorOptions">
-            </div>
-        </div>
-
-        <!-- Selezione taglia con dropdown -->
-        <div class="mb-3">
-            <label class="form-label" for="size">Seleziona Taglia</label>
-            <select class="form-select" id="size" name="size">
-                <option value="M">M</option>
-                <option value="L">L</option>
-            </select>
-        </div>
-
-        <button class="btn btn-primary">Aggiungi al Carrello</button>
-    `;
-
-    // Aggiorniamo le immagini nel carousel
-    const carouselImages = document.getElementById('carouselImages');
-    product.images.forEach((image, index) => {
-        const isActive = index === 0 ? 'active' : ''; // La prima immagine è quella attiva
-        carouselImages.innerHTML += `
-            <div class="carousel-item ${isActive}">
-                <img src="${image}" class="d-block product-image" alt="${product.modello}">
-            </div>
-        `;
+    const carousel = document.getElementById('carousel');
+    prodotto.images.forEach((element, i) => {
+        carousel.innerHTML += `<div class="carousel-item ${i == 0 ? 'active' : ''}">
+            <img src="${element}" class="d-block product-image" alt="Garmin Fenix 7">
+        </div>`
     });
 
-    // Aggiungiamo le opzioni di colore
-    const colorOptionsContainer = document.getElementById('colorOptions');
-    product.varianti.forEach(variant => {
-        if (variant.tipo === "colore") {
-            variant.valori.forEach(([colorName, colorCode]) => {
-                colorOptionsContainer.innerHTML += `
-                    <div class="color-box">
-                        <input type="radio" id="${colorName}" name="color" value="${colorName}" class="d-none"/>
-                        <label for="${colorName}">
-                            <div class="color-element" style="background-color: ${colorCode};" title="${colorName}"></div>
-                            ${colorName}
-                        </label>
-                    </div>
-                `;
-            });
-        }
+    const productTitle = document.getElementById('product-title');
+    productTitle.innerText += prodotto.marca + " " + prodotto.modello;
+
+    const description = document.getElementById('description');
+    description.innerText = prodotto.descrizione;
+
+    const price = document.getElementById('price');
+    price.innerText = prodotto.prezzo + " €";
+
+    const colorPicker = document.getElementById('color-picker');
+    const size = document.getElementById('size');
+    prodotto.varianti.forEach((variante, i) => {
+        variante.valori.forEach((valore, j) => {
+            if (variante.tipo == 'colore') {
+                colorPicker.innerHTML += `<div class="color-box">
+                    <input type="radio" id="${valore[0]}" name="color" value="${valore[0]}" class="d-none" ${j == '0' ? 'checked' : ''}/>
+                    <label for="${valore[0]}">
+                    <div class="color-element" style="background-color: ${valore[1]};" title="${valore[0]}"></div>
+                    ${valore[0]}
+                    </label>
+                </div>`
+                colorPicker.parentElement.classList.remove('d-none');
+                
+            }
+            else if (variante.tipo == 'taglia') {
+                size.innerHTML += `<option value="${valore[0]}">${valore[0]}</option>`
+                size.parentElement.classList.remove('d-none');
+            }
+        });
     });
 }
 
-// Carica i dati al caricamento della pagina
-window.onload = loadProductData;
+loadProdotto();

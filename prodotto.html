@@ -11,19 +11,12 @@
 <body class="d-flex flex-column min-vh-100">
     <header></header>
     <main class="flex-grow-1 my-4">
-        <div class="container">
+        <form method="get" action="addcart.html" class="container">
             <div class="row d-flex align-items-center"> <!-- Usato d-flex e align-items-center per la centratura verticale -->
                 <!-- Immagine prodotto -->
                 <div class="col-md-6 my-4">
                     <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="images/8.jpeg" class="d-block product-image" alt="Garmin Fenix 7">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="images/9.jpeg" class="d-block product-image" alt="Garmin Fenix 7">
-                            </div>
-                        </div>
+                        <div class="carousel-inner" id="carousel"></div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
@@ -37,32 +30,14 @@
 
                 <!-- Dettagli prodotto -->
                 <div class="col-md-6 d-flex flex-column justify-content-center"> <!-- d-flex, flex-column, justify-content-center per centrare verticalmente -->
-                    <h2>Garmin Fenix 7</h2>
-                    <p><strong>Descrizione:</strong> Orologio GPS multisport premium con funzioni avanzate per l’outdoor.</p>
-                    <p><strong>Prezzo:</strong> €799.99</p>
+                    <h2 id="product-title"></h2>
+                    <p id="description"><strong></strong></p>
+                    <p id="price"><strong>Prezzo:</strong></p>
 
                     <!-- Selezione colore -->
-                    <div class="mb-3">
+                    <div class="mb-3 d-none">
                         <label class="form-label">Seleziona Colore</label>
-                        <div class="color-picker-container">
-                            <!-- Colore Verde -->
-                            <div class="color-box">
-                                <input type="radio" id="verde" name="color" value="verde" class="d-none" checked/>
-                                <label for="verde">
-                                    <div class="color-element" style="background-color: #3C941F;" title="Verde"></div>
-                                    Verde
-                                </label>
-                            </div>
-
-                            <!-- Colore Nero -->
-                            <div class="color-box">
-                                <input type="radio" id="nero" name="color" value="nero" class="d-none"/>
-                                <label for="nero">
-                                    <div class="color-element" style="background-color: #000000;" title="Nero"></div>
-                                    Nero
-                                </label>
-                            </div>
-                        </div>
+                        <div class="color-picker-container" id="color-picker"></div>
                     </div>
 
                     <!-- Selezione taglia con dropdown -->
@@ -73,16 +48,17 @@
                             <option value="L">L</option>
                         </select>
                     </div>
-
-                    <button class="btn btn-primary">Aggiungi al Carrello</button>
+                    <input type="text" name="id" id="id" class="d-none">
+                    <button type="submit" class="btn btn-primary">Aggiungi al Carrello</button>
                 </div>
             </div>
-        </div>
+        </form>
     </main>
     <footer></footer>
 
     <!-- Script inclusi -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="functions/loadProdotto.js"></script>
     <script src="functions/colormode.js"></script>
     <script src="functions/header.js"></script>
     <script src="functions/footer.js"></script>

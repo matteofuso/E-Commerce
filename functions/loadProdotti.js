@@ -8,9 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const data = await response.json();
         const productContainer = document.querySelector(".d-flex.flex-wrap.justify-content-center");
         productContainer.innerHTML = ""; // Svuota il contenitore prima di aggiungere i prodotti
-        console.log(data);
-        for (const id in data) { // id sarà "l1", "l2", ecc.
-            const prodotto = data[id];
+        data.forEach(prodotto => {
 
             // Creazione della card prodotto
             const card = document.createElement("div");
@@ -43,7 +41,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const button = document.createElement("a");
             button.className = "btn btn-primary";
             button.textContent = "Aggiungi al carrello";
-            button.href = `prodotto.html?id=${id}`; // Inserisce l'ID nel link
+            button.href = `prodotto.html?id=${prodotto["id"]}`; // Inserisce l'ID nel link
 
             // Costruzione della card
             cardBody.appendChild(title);
@@ -55,7 +53,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             // Aggiunta al contenitore dei prodotti
             document.querySelector(".d-flex.flex-wrap.justify-content-center").appendChild(card);
-        }
+        });
     } catch (error) {
         console.error("Errore nel caricamento dei dati:", error);
     }

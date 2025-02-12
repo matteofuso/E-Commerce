@@ -1,5 +1,6 @@
-{
-    "l1": {
+[
+    {
+        "id": "l1",
         "marca": "Rolex",
         "modello": "Submariner",
         "descrizione": "Orologio di lusso subacqueo con cassa in acciaio e lunetta in ceramica.",
@@ -15,7 +16,8 @@
             }
         ]
     },
-    "l2": {
+    {
+        "id": "l2",
         "marca": "Omega",
         "modello": "Speedmaster Professional",
         "descrizione": "L'iconico orologio indossato dagli astronauti sulla Luna.",
@@ -23,7 +25,8 @@
         "varianti": [],
         "images": ["images/1.jpeg", "images/8.jpeg"]
     },
-    "l3": {
+    {
+        "id": "l3",
         "marca": "Tag Heuer",
         "modello": "Carrera Chronograph",
         "descrizione": "Cronografo sportivo di lusso ispirato al mondo delle corse automobilistiche.",
@@ -31,7 +34,8 @@
         "varianti": [],
         "images": ["images/2.jpeg"]
     },
-    "l4": {
+    {
+        "id": "l4",
         "marca": "Patek Philippe",
         "modello": "Nautilus",
         "descrizione": "Orologio elegante con design iconico e meccanismo automatico.",
@@ -39,7 +43,8 @@
         "varianti": [],
         "images": ["images/12.jpeg"]
     },
-    "l5": {
+    {
+        "id": "l5",
         "marca": "Audemars Piguet",
         "modello": "Royal Oak",
         "descrizione": "Orologio di lusso con cassa in acciaio e design sportivo raffinato.",
@@ -55,7 +60,8 @@
         ],
         "images": ["images/10.jpeg", "images/4.jpeg"]
     },
-    "l6": {
+    {
+        "id": "l6",
         "marca": "Cartier",
         "modello": "Santos",
         "descrizione": "Orologio di lusso con quadrante raffinato e cassa in oro rosa.",
@@ -63,7 +69,8 @@
         "varianti": [],
         "images": ["images/5.jpeg"]
     },
-    "l7": {
+    {
+        "id": "l7",
         "marca": "Breitling",
         "modello": "Navitimer B01",
         "descrizione": "Cronografo di lusso con movimento di manifattura e scala logaritmica.",
@@ -71,7 +78,8 @@
         "varianti": [],
         "images": ["images/11.jpeg"]
     },
-    "l8": {
+    {
+        "id": "l8",
         "marca": "IWC",
         "modello": "Portugieser Chronograph",
         "descrizione": "Cronografo di lusso con design classico e movimento automatico.",
@@ -79,7 +87,8 @@
         "varianti": [],
         "images": ["images/6.jpeg"]
     },
-    "l9": {
+    {
+        "id": "l9",
         "marca": "Vacheron Constantin",
         "modello": "Overseas",
         "descrizione": "Orologio sportivo di lusso con movimento di alta precisione.",
@@ -92,4 +101,4 @@
         ],
         "images": ["images/3.jpeg"]
     }
-}
+]
