@@ -5,16 +5,19 @@
         "modello": "Forerunner 945",
         "descrizione": "Orologio GPS per la corsa con funzioni avanzate di allenamento e mappe integrate.",
         "prezzo": "599.99",
-        "images": ["images/1.jpeg", "images/2.jpeg"],
-        "varianti": [
+        "colori": [
             {
-                "tipo": "colore",
-                "valori": [
-                    ["nero", "#000000"],
-                    ["blu", "#0000ff"]
-                ]
+                "nome": "nero",
+                "codice": "#000000",
+                "immagini": ["images/1.jpeg"]
+            },
+            {
+                "nome": "blu",
+                "codice": "#0000FF",
+                "immagini": ["images/2.jpeg"]
             }
-        ]
+        ],
+        "taglie": []
     },
     {
         "id": "s2",
@@ -22,17 +25,34 @@
         "modello": "9 Baro",
         "descrizione": "Orologio sportivo con batteria a lunga durata e altimetro barometrico.",
         "prezzo": "499.99",
-        "varianti": [],
-        "images": ["images/3.jpeg", "images/4.jpeg"]
+        "colori": [
+            {
+                "nome": "nero",
+                "codice": "#000000",
+                "immagini": ["images/3.jpeg"]
+            },
+            {
+                "nome": "grigio",
+                "codice": "#808080",
+                "immagini": ["images/4.jpeg"]
+            }
+        ],
+        "taglie": []
     },
     {
         "id": "s3",
         "marca": "Polar",
         "modello": "Vantage V2",
         "descrizione": "Smartwatch multisport con GPS e monitoraggio avanzato del recupero.",
+        "colori": [
+            {
+                "nome": "nero",
+                "codice": "#000000",
+                "immagini": ["images/5.jpeg"]
+            }
+        ],
         "prezzo": "479.99",
-        "varianti": [],
-        "images": ["images/5.jpeg"]
+        "taglie": []
     },
     {
         "id": "s4",
@@ -40,8 +60,14 @@
         "modello": "Vertix 2",
         "descrizione": "Orologio ultraresistente con navigazione avanzata e grande autonomia.",
         "prezzo": "699.99",
-        "varianti": [],
-        "images": ["images/7.jpeg"]
+        "colori": [
+            {
+                "nome": "nero",
+                "codice": "#000000",
+                "immagini": ["images/7.jpeg"]
+            }
+        ],
+        "taglie": []
     },
     {
         "id": "s5",
@@ -49,16 +75,19 @@
         "modello": "Fenix 7",
         "descrizione": "Orologio GPS multisport premium con funzioni avanzate per l’outdoor.",
         "prezzo": "799.99",
-        "varianti": [
+        "colori": [
             {
-                "tipo": "colore",
-                "valori": [
-                    ["grigio", "#808080"],
-                    ["nero", "#000000"]
-                ]
+                "nome": "nero",
+                "codice": "#000000",
+                "immagini": ["images/8.jpeg"]
+            },
+            {
+                "nome": "grigio",
+                "codice": "#808080",
+                "immagini": ["images/9.jpeg"]
             }
         ],
-        "images": ["images/8.jpeg", "images/9.jpeg"]
+        "taglie": []
     },
     {
         "id": "s6",
@@ -66,8 +95,14 @@
         "modello": "T-Rex Pro",
         "descrizione": "Smartwatch rugged con GPS e certificazione militare.",
         "prezzo": "179.99",
-        "varianti": [],
-        "images": ["images/6.jpeg"]
+        "colori": [
+            {
+                "nome": "nero",
+                "codice": "#000000",
+                "immagini": ["images/6.jpeg"]
+            }
+        ],
+        "taglie": []
     },
     {
         "id": "s7",
@@ -75,8 +110,14 @@
         "modello": "G-Shock GBD-H1000",
         "descrizione": "Orologio sportivo con cardiofrequenzimetro e GPS integrato.",
         "prezzo": "399.99",
-        "varianti": [],
-        "images": ["images/10.jpeg"]
+        "colori": [
+            {
+                "nome": "nero",
+                "codice": "#000000",
+                "immagini": ["images/10.jpeg"]
+            }
+        ],
+        "taglie": []
     },
     {
         "id": "s8",
@@ -84,8 +125,14 @@
         "modello": "Sense 2",
         "descrizione": "Smartwatch avanzato con monitoraggio dello stress e della salute.",
         "prezzo": "299.99",
-        "varianti": [],
-        "images": ["images/11.jpeg"]
+        "colori": [
+            {
+                "nome": "nero",
+                "codice": "#000000",
+                "immagini": ["images/11.jpeg"]
+            }
+        ],
+        "taglie": []
     },
     {
         "id": "s9",
@@ -93,12 +140,13 @@
         "modello": "Watch Ultra",
         "descrizione": "Smartwatch premium per sport estremi con GPS di precisione.",
         "prezzo": "899.99",
-        "varianti": [
+        "colori": [
             {
-                "tipo": "taglia",
-                "valori": ["S", "M", "L"]
+                "nome": "nero",
+                "codice": "#000000",
+                "immagini": ["images/12.jpeg"]
             }
         ],
-        "images": ["images/12.jpeg"]
+        "taglie": ["S", "M", "L"]
     }
 ]

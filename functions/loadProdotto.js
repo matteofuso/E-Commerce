@@ -1,3 +1,5 @@
+const colorPicker = document.getElementById('color-picker');
+
 async function loadProdotto(){
     const params = new URLSearchParams(window.location.search);
     const idElement = document.getElementById('id');
@@ -14,12 +16,7 @@ async function loadProdotto(){
         return;
     }
 
-    const carousel = document.getElementById('carousel');
-    prodotto.images.forEach((element, i) => {
-        carousel.innerHTML += `<div class="carousel-item ${i == 0 ? 'active' : ''}">
-            <img src="${element}" class="d-block product-image" alt="Garmin Fenix 7">
-        </div>`
-    });
+    updateCarousel(prodotto.colori[0].immagini);
 
     const productTitle = document.getElementById('product-title');
     productTitle.innerText += prodotto.marca + " " + prodotto.modello;
@@ -30,27 +27,37 @@ async function loadProdotto(){
     const price = document.getElementById('price');
     price.innerText = prodotto.prezzo + " €";
 
-    const colorPicker = document.getElementById('color-picker');
     const size = document.getElementById('size');
-    prodotto.varianti.forEach((variante, i) => {
-        variante.valori.forEach((valore, j) => {
-            if (variante.tipo == 'colore') {
-                colorPicker.innerHTML += `<div class="color-box">
-                    <input type="radio" id="${valore[0]}" name="color" value="${valore[0]}" class="d-none" ${j == '0' ? 'checked' : ''}/>
-                    <label for="${valore[0]}">
-                    <div class="color-element" style="background-color: ${valore[1]};" title="${valore[0]}"></div>
-                    ${valore[0]}
+
+    prodotto.colori.forEach((colore, i) => {
+        console.log(colore);
+        colorPicker.innerHTML += `<div class="color-box">
+                    <input type="radio" id="${colore.nome}" name="color" value="${colore.nome}" class="d-none" ${i == '0' ? 'checked' : ''}/>
+                    <label for="${colore.nome}">
+                    <div class="color-element" style="background-color: ${colore.codice};" title="${colore.nome}"></div>
+                    ${colore.nome}
                     </label>
                 </div>`
-                colorPicker.parentElement.classList.remove('d-none');
-                
-            }
-            else if (variante.tipo == 'taglia') {
-                size.innerHTML += `<option value="${valore[0]}">${valore[0]}</option>`
-                size.parentElement.classList.remove('d-none');
-            }
-        });
     });
+
+    prodotto.taglie.forEach((taglia, i) => {
+        size.innerHTML += `<option value="${taglia}">${taglia}</option>`
+        size.parentElement.classList.remove('d-none');
+    });
+
+    colorPicker.addEventListener('change', (e) => {
+        const selectedColor = prodotto.colori.find(colore => colore.nome === e.target.value);
+        updateCarousel(selectedColor.immagini);
+    });
+}
+
+function updateCarousel(images) {
+    const carousel = document.getElementById('carousel');
+    carousel.innerHTML = images.map((img, i) => `
+        <div class="carousel-item ${i === 0 ? 'active' : ''}">
+            <img src="${img}" class="d-block product-image" alt="Product Image">
+        </div>
+    `).join('');
 }
 
 loadProdotto();

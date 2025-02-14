@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             // Immagine prodotto
             const img = document.createElement("img");
-            img.src = prodotto.images[0]; // Prima immagine disponibile
+            img.src = prodotto.colori[0].immagini[0]; // Prima immagine disponibile
             img.className = "card-img-top";
             img.alt = prodotto.modello;
 
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             // Creazione del pulsante con href contenente l'ID
             const button = document.createElement("a");
             button.className = "btn btn-primary";
-            button.textContent = "Aggiungi al carrello";
+            button.textContent = "Vai al prodotto";
             button.href = `prodotto.html?id=${prodotto["id"]}`; // Inserisce l'ID nel link
 
             // Costruzione della card

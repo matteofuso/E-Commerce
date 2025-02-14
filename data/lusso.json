@@ -5,16 +5,19 @@
         "modello": "Submariner",
         "descrizione": "Orologio di lusso subacqueo con cassa in acciaio e lunetta in ceramica.",
         "prezzo": "10999.99",
-        "images": ["images/7.jpeg", "images/9.jpeg"],
-        "varianti": [
+        "colori": [
             {
-                "tipo": "colore",
-                "valori": [
-                    ["nero", "#000000"],
-                    ["verde", "#008000"]
-                ]
+                "nome": "nero",
+                "codice": "#000000",
+                "immagini": ["images/7.jpeg"]
+            },
+            {
+                "nome": "verde",
+                "codice": "#008000",
+                "immagini": ["images/9.jpeg"]
             }
-        ]
+        ],
+        "taglie": []
     },
     {
         "id": "l2",
@@ -22,8 +25,19 @@
         "modello": "Speedmaster Professional",
         "descrizione": "L'iconico orologio indossato dagli astronauti sulla Luna.",
         "prezzo": "7499.99",
-        "varianti": [],
-        "images": ["images/1.jpeg", "images/8.jpeg"]
+        "colori": [
+            {
+                "nome": "nero",
+                "codice": "#000000",
+                "immagini": ["images/1.jpeg"]
+            },
+            {
+                "nome": "argento",
+                "codice": "#C0C0C0",
+                "immagini": ["images/8.jpeg"]
+            }
+        ],
+        "taglie": []
     },
     {
         "id": "l3",
@@ -31,8 +45,14 @@
         "modello": "Carrera Chronograph",
         "descrizione": "Cronografo sportivo di lusso ispirato al mondo delle corse automobilistiche.",
         "prezzo": "5999.99",
-        "varianti": [],
-        "images": ["images/2.jpeg"]
+        "colori": [
+            {
+                "nome": "nero",
+                "codice": "#000000",
+                "immagini": ["images/2.jpeg"]
+            }
+        ],
+        "taglie": []
     },
     {
         "id": "l4",
@@ -40,8 +60,14 @@
         "modello": "Nautilus",
         "descrizione": "Orologio elegante con design iconico e meccanismo automatico.",
         "prezzo": "39999.99",
-        "varianti": [],
-        "images": ["images/12.jpeg"]
+        "colori": [
+            {
+                "nome": "blu",
+                "codice": "#0000FF",
+                "immagini": ["images/12.jpeg"]
+            }
+        ],
+        "taglie": []
     },
     {
         "id": "l5",
@@ -49,16 +75,19 @@
         "modello": "Royal Oak",
         "descrizione": "Orologio di lusso con cassa in acciaio e design sportivo raffinato.",
         "prezzo": "29999.99",
-        "varianti": [
+        "colori": [
             {
-                "tipo": "colore",
-                "valori": [
-                    ["blu", "#0000FF"],
-                    ["grigio", "#808080"]
-                ]
+                "nome": "blu",
+                "codice": "#0000FF",
+                "immagini": ["images/10.jpeg"]
+            },
+            {
+                "nome": "grigio",
+                "codice": "#808080",
+                "immagini": ["images/4.jpeg"]
             }
         ],
-        "images": ["images/10.jpeg", "images/4.jpeg"]
+        "taglie": []
     },
     {
         "id": "l6",
@@ -66,8 +95,14 @@
         "modello": "Santos",
         "descrizione": "Orologio di lusso con quadrante raffinato e cassa in oro rosa.",
         "prezzo": "18999.99",
-        "varianti": [],
-        "images": ["images/5.jpeg"]
+        "colori": [
+            {
+                "nome": "oro rosa",
+                "codice": "#FFC0CB",
+                "immagini": ["images/5.jpeg"]
+            }
+        ],
+        "taglie": []
     },
     {
         "id": "l7",
@@ -75,8 +110,14 @@
         "modello": "Navitimer B01",
         "descrizione": "Cronografo di lusso con movimento di manifattura e scala logaritmica.",
         "prezzo": "8499.99",
-        "varianti": [],
-        "images": ["images/11.jpeg"]
+        "colori": [
+            {
+                "nome": "nero",
+                "codice": "#000000",
+                "immagini": ["images/11.jpeg"]
+            }
+        ],
+        "taglie": []
     },
     {
         "id": "l8",
@@ -84,8 +125,14 @@
         "modello": "Portugieser Chronograph",
         "descrizione": "Cronografo di lusso con design classico e movimento automatico.",
         "prezzo": "7999.99",
-        "varianti": [],
-        "images": ["images/6.jpeg"]
+        "colori": [
+            {
+                "nome": "argento",
+                "codice": "#C0C0C0",
+                "immagini": ["images/6.jpeg"]
+            }
+        ],
+        "taglie": []
     },
     {
         "id": "l9",
@@ -93,12 +140,13 @@
         "modello": "Overseas",
         "descrizione": "Orologio sportivo di lusso con movimento di alta precisione.",
         "prezzo": "25999.99",
-        "varianti": [
+        "colori": [
             {
-                "tipo": "taglia",
-                "valori": ["M", "L"]
+                "nome": "blu",
+                "codice": "#0000FF",
+                "immagini": ["images/3.jpeg"]
             }
         ],
-        "images": ["images/3.jpeg"]
+        "taglie": ["M", "L"]
     }
 ]
