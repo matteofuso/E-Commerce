@@ -1,0 +1,18 @@
+[
+    {
+        "id": "b1",
+        "name": "Luxury Starter Pack",
+        "description": "Perfect introduction to luxury watches",
+        "price": "19999.99",
+        "products": ["l1", "l2", "l3"],
+        "image": "images/eleganti.jpeg"
+    },
+    {
+        "id": "b2", 
+        "name": "Sports Enthusiast Bundle",
+        "description": "Essential watches for active lifestyles",
+        "price": "1499.99",
+        "products": ["s1", "s2", "s3"],
+        "image": "images/sportivi.jpeg"
+    }
+]

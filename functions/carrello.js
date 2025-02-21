@@ -41,18 +41,38 @@ async function loadCart() {
     const cartTotal = document.getElementById("cart-total");
     cartBody.innerHTML = "";
     let total = 0;
+
+    // Function to fetch product details
+    async function getProductDetails(id) {
+        const file = id.startsWith('s') ? 'sport.json' : 
+                    id.startsWith('l') ? 'lusso.json' : 
+                    id.startsWith('b') ? 'bundles.json' : null;
+        if (!file) return null;
+        const response = await fetch(`data/${file}`);
+        const data = await response.json();
+        return data.find(p => p.id === id);
+    }
     
     // Calculate provisional total
     for (let item of cart) {
-        const file = item.id.startsWith('s') ? 'sport.json' : 'lusso.json';
-        const response = await fetch(`data/${file}`);
-        const data = await response.json();
-        const prodotto = data.find(p => p.id === item.id);
-        
+        const prodotto = await getProductDetails(item.id);
         if (!prodotto) continue;
-        
-        const itemTotal = parseFloat(prodotto.prezzo) * item.quantity;
-        total += itemTotal;
+
+        if (item.id.startsWith('b')) {
+            // Handle bundle
+            let bundleTotal = 0;
+            for (const productId of prodotto.products) {
+                const product = await getProductDetails(productId);
+                if (product) {
+                    bundleTotal += parseFloat(product.prezzo);
+                }
+            }
+            total += bundleTotal * item.quantity;
+        } else {
+            // Handle individual product
+            const itemTotal = parseFloat(prodotto.prezzo) * item.quantity;
+            total += itemTotal;
+        }
     }
     
     // Get applied discount
@@ -65,27 +85,52 @@ async function loadCart() {
     
     // Populate cart items
     for (let item of cart) {
-        const file = item.id.startsWith('s') ? 'sport.json' : 'lusso.json';
-        const response = await fetch(`data/${file}`);
-        const data = await response.json();
-        const prodotto = data.find(p => p.id === item.id);
-        
+        const prodotto = await getProductDetails(item.id);
         if (!prodotto) continue;
-        
+
         const row = document.createElement("tr");
-        const itemTotal = parseFloat(prodotto.prezzo) * item.quantity;
         
-        row.innerHTML = `
-            <td>${prodotto.marca} ${prodotto.modello}</td>
-            <td>${item.color}</td>
-            <td>${item.size ?? 'Taglia Unica'}</td>
-            <td>
-                <input type="number" min="1" value="${item.quantity}" class="form-control" onchange="updateQuantity('${item.id}', this.value)">
-            </td>
-            <td>€${parseFloat(prodotto.prezzo).toFixed(2)}</td>
-            <td>€${itemTotal.toFixed(2)}</td>
-            <td><button class="btn btn-danger btn-sm" onclick="removeItem('${item.id}')">X</button></td>
-        `;
+        if (item.id.startsWith('b')) {
+            // Display bundle
+            let bundleTotal = 0;
+            const productsList = prodotto.products.map(async (productId) => {
+                const product = await getProductDetails(productId);
+                if (product) {
+                    bundleTotal += parseFloat(product.prezzo);
+                    return `${product.marca} ${product.modello}`;
+                }
+                return '';
+            }).join(', ');
+
+            const itemTotal = bundleTotal * item.quantity;
+            
+            row.innerHTML = `
+                <td>${prodotto.name} (${productsList})</td>
+                <td>-</td>
+                <td>-</td>
+                <td>
+                    <input type="number" min="1" value="${item.quantity}" class="form-control" onchange="updateQuantity('${item.id}', this.value)">
+                </td>
+                <td>€${bundleTotal.toFixed(2)}</td>
+                <td>€${itemTotal.toFixed(2)}</td>
+                <td><button class="btn btn-danger btn-sm" onclick="removeItem('${item.id}')">X</button></td>
+            `;
+        } else {
+            // Display individual product
+            const itemTotal = parseFloat(prodotto.prezzo) * item.quantity;
+            
+            row.innerHTML = `
+                <td>${prodotto.marca} ${prodotto.modello}</td>
+                <td>${item.color}</td>
+                <td>${item.size ?? 'Taglia Unica'}</td>
+                <td>
+                    <input type="number" min="1" value="${item.quantity}" class="form-control" onchange="updateQuantity('${item.id}', this.value)">
+                </td>
+                <td>€${parseFloat(prodotto.prezzo).toFixed(2)}</td>
+                <td>€${itemTotal.toFixed(2)}</td>
+                <td><button class="btn btn-danger btn-sm" onclick="removeItem('${item.id}')">X</button></td>
+            `;
+        }
         cartBody.appendChild(row);
     }
 }

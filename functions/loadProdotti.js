@@ -4,24 +4,73 @@ document.addEventListener("DOMContentLoaded", async () => {
         const category = urlParams.get("category");
         const fileName = category === "sport" ? "sport.json" : "lusso.json";
 
-        const response = await fetch("data/" + fileName); // Assicurati che il percorso sia corretto
-        const data = await response.json();
-        const productContainer = document.querySelector(".d-flex.flex-wrap.justify-content-center");
-        productContainer.innerHTML = ""; // Svuota il contenitore prima di aggiungere i prodotti
-        data.forEach(prodotto => {
+        // Load products
+        const productResponse = await fetch("data/" + fileName);
+        const productData = await productResponse.json();
 
-            // Creazione della card prodotto
+        // Load bundles
+        const bundleResponse = await fetch("data/bundles.json");
+        const bundleData = await bundleResponse.json();
+
+        const productContainer = document.querySelector(".d-flex.flex-wrap.justify-content-center");
+        productContainer.innerHTML = ""; // Clear container before adding items
+
+        // Display bundles first
+        bundleData.forEach(bundle => {
+            const card = document.createElement("div");
+            card.className = "card m-3 shadow-sm bundle-card";
+            card.style.width = "18rem";
+
+            // Bundle image
+            const img = document.createElement("img");
+            img.src = bundle.image;
+            img.className = "card-img-top";
+            img.alt = bundle.name;
+
+            // Card body
+            const cardBody = document.createElement("div");
+            cardBody.className = "card-body";
+
+            const title = document.createElement("h5");
+            title.className = "card-title";
+            title.textContent = bundle.name;
+
+            const desc = document.createElement("p");
+            desc.className = "card-text";
+            desc.textContent = bundle.description;
+
+            const price = document.createElement("p");
+            price.className = "card-text";
+            price.innerHTML = `<strong>Prezzo: €${bundle.price}</strong>`;
+
+            const button = document.createElement("a");
+            button.className = "btn btn-primary";
+            button.textContent = "Vedi Bundle";
+            button.href = `prodotto.html?bundle=${bundle.id}`;
+
+            cardBody.appendChild(title);
+            cardBody.appendChild(desc);
+            cardBody.appendChild(price);
+            cardBody.appendChild(button);
+            card.appendChild(img);
+            card.appendChild(cardBody);
+
+            productContainer.appendChild(card);
+        });
+
+        // Display individual products
+        productData.forEach(prodotto => {
             const card = document.createElement("div");
             card.className = "card m-3 shadow-sm";
             card.style.width = "18rem";
 
-            // Immagine prodotto
+            // Product image
             const img = document.createElement("img");
-            img.src = prodotto.colori[0].immagini[0]; // Prima immagine disponibile
+            img.src = prodotto.colori[0].immagini[0];
             img.className = "card-img-top";
             img.alt = prodotto.modello;
 
-            // Corpo della card
+            // Card body
             const cardBody = document.createElement("div");
             cardBody.className = "card-body";
 
@@ -37,13 +86,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             price.className = "card-text";
             price.innerHTML = `<strong>Prezzo: €${prodotto.prezzo}</strong>`;
 
-            // Creazione del pulsante con href contenente l'ID
             const button = document.createElement("a");
             button.className = "btn btn-primary";
             button.textContent = "Vai al prodotto";
-            button.href = `prodotto.html?id=${prodotto["id"]}`; // Inserisce l'ID nel link
+            button.href = `prodotto.html?id=${prodotto["id"]}`;
 
-            // Costruzione della card
             cardBody.appendChild(title);
             cardBody.appendChild(desc);
             cardBody.appendChild(price);
@@ -51,8 +98,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             card.appendChild(img);
             card.appendChild(cardBody);
 
-            // Aggiunta al contenitore dei prodotti
-            document.querySelector(".d-flex.flex-wrap.justify-content-center").appendChild(card);
+            productContainer.appendChild(card);
         });
     } catch (error) {
         console.error("Errore nel caricamento dei dati:", error);
