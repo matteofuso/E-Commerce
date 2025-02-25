@@ -1,26 +1,23 @@
 document.addEventListener("DOMContentLoaded", async () => {
     try {
-        const urlParams = new URLSearchParams(window.location.search);
-        const category = urlParams.get("category");
-        const fileName = category + ".json";
+        // Load bundles
+        const bundleResponse = await fetch("data/bundles.json");
+        const bundleData = await bundleResponse.json();
 
-        // Load products
-        const productResponse = await fetch("data/" + fileName);
-        const productData = await productResponse.json();
         const productContainer = document.querySelector(".d-flex.flex-wrap.justify-content-center");
         productContainer.innerHTML = ""; // Clear container before adding items
 
-        // Display individual products
-        productData.forEach(prodotto => {
+        // Display bundles first
+        bundleData.forEach(bundle => {
             const card = document.createElement("div");
-            card.className = "card m-3 shadow-sm";
+            card.className = "card m-3 shadow-sm bundle-card";
             card.style.width = "18rem";
 
-            // Product image
+            // Bundle image
             const img = document.createElement("img");
-            img.src = prodotto.colori[0].immagini[0];
+            img.src = bundle.image;
             img.className = "card-img-top";
-            img.alt = prodotto.modello;
+            img.alt = bundle.name;
 
             // Card body
             const cardBody = document.createElement("div");
@@ -28,20 +25,20 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             const title = document.createElement("h5");
             title.className = "card-title";
-            title.textContent = prodotto.marca + " " + prodotto.modello;
+            title.textContent = bundle.name;
 
             const desc = document.createElement("p");
             desc.className = "card-text";
-            desc.textContent = prodotto.descrizione;
+            desc.textContent = bundle.description;
 
             const price = document.createElement("p");
             price.className = "card-text";
-            price.innerHTML = `<strong>Prezzo: €${prodotto.prezzo}</strong>`;
+            price.innerHTML = `<strong>Prezzo: €${bundle.price}</strong>`;
 
             const button = document.createElement("a");
             button.className = "btn btn-primary";
-            button.textContent = "Vai al prodotto";
-            button.href = `prodotto.html?id=${prodotto["id"]}`;
+            button.textContent = "Vedi Bundle";
+            button.href = `bundle.html?id=${bundle.id}`;
 
             cardBody.appendChild(title);
             cardBody.appendChild(desc);
@@ -52,6 +49,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             productContainer.appendChild(card);
         });
+
     } catch (error) {
         console.error("Errore nel caricamento dei dati:", error);
     }

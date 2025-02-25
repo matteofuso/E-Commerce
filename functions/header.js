@@ -13,6 +13,10 @@ const pages = [
         url: "prodotti.html?category=lusso",
     },
     {
+        name: "Bundle",
+        url: "bundles.html",
+    },
+    {
         name: "Carello",
         url: "carrello.html",
     }
