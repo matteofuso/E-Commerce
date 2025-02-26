@@ -37,10 +37,6 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.card {
-  width: 16rem;
-}
-
 .color-picker-container {
   display: flex;
   flex-wrap: wrap;

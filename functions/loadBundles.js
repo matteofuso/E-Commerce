@@ -4,16 +4,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     const bundleResponse = await fetch("data/bundles.json");
     const bundleData = await bundleResponse.json();
 
-    const productContainer = document.querySelector(
-      ".d-flex.flex-wrap.justify-content-center"
-    );
+    const productContainer = document.getElementById("product-container");
     productContainer.innerHTML = ""; // Clear container before adding items
 
     // Display bundles first
     bundleData.forEach((bundle) => {
       const card = document.createElement("div");
-      card.className = "card m-3 shadow-sm bundle-card";
-      card.style.width = "18rem";
+      card.className = "card m-3 shadow-sm bundle-card px-0";
 
       // Bundle image
       const img = document.createElement("img");
