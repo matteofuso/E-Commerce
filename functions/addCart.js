@@ -37,6 +37,7 @@ if (id.length === 1) {
   let bundle = {
     id: bundle_id,
     products: [],
+    quantity: 1,
   };
   for (let i = 0; i < id.length; i++) {
     color = params.get(id[i] + "-color");

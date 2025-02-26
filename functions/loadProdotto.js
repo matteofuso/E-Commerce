@@ -28,7 +28,7 @@ async function loadProdotto(id, parent, button = true) {
 
                   <div class="mb-3 d-none">
                       <label class="form-label" for="size">Seleziona Taglia</label>
-                      <select class="form-select" id="size" name="${id}-size"></select>
+                      <select class="form-select" id="${id}-size" name="${id}-size"></select>
                   </div>
                   
                   <div class="overflow-auto mb-4">
@@ -47,8 +47,7 @@ async function loadProdotto(id, parent, button = true) {
               </div>`;
   parent.appendChild(product);
   const file = id.startsWith("s") ? "sport.json" : "lusso.json";
-  const response = await fetch(`data/${file}`);
-  data = await response.json();
+  data = await fetchJSON(`data/${file}`);
 
   const prodotto = data.find((p) => p.id === id);
   if (!prodotto) {
@@ -84,7 +83,8 @@ async function loadProdotto(id, parent, button = true) {
     caratteristicheDiv.classList.add("d-none");
   }
 
-  const size = product.querySelector("#" + id + "-size");
+  let size = product.querySelector("#" + id + "-size");
+  console.log(size);
   const colorPickerContainer = product.querySelector(
     "#" + id + "-color-picker"
   );

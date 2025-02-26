@@ -1,8 +1,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     // Load bundles
-    const bundleResponse = await fetch("data/bundles.json");
-    const bundleData = await bundleResponse.json();
+    const bundleData = await fetchJSON("data/bundles.json");
 
     const productContainer = document.getElementById("product-container");
     productContainer.innerHTML = ""; // Clear container before adding items

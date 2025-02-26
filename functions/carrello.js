@@ -1,6 +1,5 @@
 async function fetchPromoCodes() {
-  const response = await fetch("data/promocodes.json");
-  return await response.json();
+  return await fetchJSON("data/promocodes.json");
 }
 
 async function applyDiscount() {
@@ -74,8 +73,7 @@ async function loadProducts(cart, cartBody, minimal = false) {
       ? "lusso.json"
       : null;
     if (!file) return null;
-    const response = await fetch(`data/${file}`);
-    const data = await response.json();
+    const data = await fetchJSON(`data/${file}`);
     return data.find((p) => p.id === id);
   }
   
@@ -194,8 +192,7 @@ async function loadProducts(cart, cartBody, minimal = false) {
 }
 
 async function loadBundles(cart, bundleContainer) {
-  const response = await fetch(`data/bundles.json`);
-  const data = await response.json();
+  const data = await fetchJSON("data/bundles.json");
   let totalPrice = 0;
   
   // Verifica se ci sono bundle nel carrello

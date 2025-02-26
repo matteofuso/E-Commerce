@@ -5,8 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const fileName = category + ".json";
 
     // Load products
-    const productResponse = await fetch("data/" + fileName);
-    const productData = await productResponse.json();
+    const productData = await fetchJSON("data/" + fileName);
     const productContainer = document.querySelector(
       ".d-flex.flex-wrap.justify-content-center"
     );

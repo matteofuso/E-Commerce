@@ -8,8 +8,7 @@ async function loadBundle() {
   }
 
   // Fetch bundle data
-  const bundleData = await fetch("data/bundles.json");
-  const bundles = await bundleData.json();
+  const bundles = await fetchJSON("data/bundles.json");
 
   const selectedBundle = bundles.find((bundle) => bundle.id === bundleId);
   if (!selectedBundle) {
