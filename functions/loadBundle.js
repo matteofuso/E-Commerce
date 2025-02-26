@@ -26,14 +26,6 @@ async function loadBundle() {
         prezzo_totale += parseFloat(prodotto.prezzo);
     }
 
-    // Add products from the bundle to the cart
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    for (const productId of selectedBundle.products) {
-        const product = { id: productId, quantity: 1 }; // Assuming quantity is 1 for each product
-        cart.push(product);
-    }
-    localStorage.setItem("cart", JSON.stringify(cart));
-
     // Display bundle details
     document.getElementById("bundle-name").innerText = selectedBundle.name;
     document.getElementById("bundle-description").innerText = selectedBundle.description;

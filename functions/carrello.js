@@ -16,23 +16,18 @@ async function applyDiscount() {
     return;
   }
 
-  const provisionalTotal = parseFloat(
-    document.getElementById("provisional-total").textContent
-  );
-
   if (promo) {
-    const discountAmount = (provisionalTotal * promo.discount) / 100;
-    // Save applied discount
+    // Save applied discount percentage
     localStorage.setItem(
       "appliedDiscount",
-      JSON.stringify({ amount: discountAmount })
+      JSON.stringify({ percentage: promo.discount })
     );
     // Save used code
     usedCodes.push(discountCode);
     localStorage.setItem("usedCodes", JSON.stringify(usedCodes));
 
     alert(
-      `Codice sconto applicato! Hai risparmiato €${discountAmount.toFixed(2)}`
+      `Codice sconto applicato! Sconto del ${promo.discount}% applicato al totale.`
     );
     loadCart(); // Refresh totals
   } else {
@@ -52,15 +47,19 @@ async function loadCart() {
   total = await loadProducts(cart, cartBody);
   document.getElementById("total").innerHTML = "<strong>Totale parziale: </strong>€" + total.toFixed(2);
   total += await loadBundles(cart, bundleContainer);
-  // Get applied discount
+  
+  // Get applied discount percentage
   const appliedDiscount = JSON.parse(
     localStorage.getItem("appliedDiscount")
-  ) || { amount: 0 };
+  ) || { percentage: 0 };
+
+  // Calculate discount amount based on current total
+  const discountValue = (total * appliedDiscount.percentage) / 100;
 
   // Update all totals
   provisionalTotal.textContent = total.toFixed(2);
-  discountAmount.textContent = appliedDiscount.amount.toFixed(2);
-  cartTotal.textContent = (total - appliedDiscount.amount).toFixed(2);
+  discountAmount.textContent = discountValue.toFixed(2);
+  cartTotal.textContent = (total - discountValue).toFixed(2);
 }
 
 async function loadProducts(cart, cartBody, minimal = false) {
@@ -117,13 +116,12 @@ async function loadBundles(cart, bundleContainer){
   let totalPrice = 0;
   for (let i = 0; i < cart.length; i++) {
     if (cart[i].id.startsWith("b")) {
-      let price = 0;
       const bundle = data.find((b) => b.id === cart[i].id);
       container = document.createElement("div");
       container.classList.add("my-4");
       container.innerHTML += `<h3>${bundle.name}</h3>`;
-      container.innerHTML += `<p>${bundle.description}</p>`;
-      container.innerHTML += `<table class="table">
+      container.innerHTML += `<div class="d-flex justify-content-between"><p>${bundle.description}</p><button class="btn btn-danger btn-sm ms-3" onclick="removeItem('${cart[i].id}')">Rimuovi bundle</button></div>`;
+      container.innerHTML += `<div class="control-overflow"><table class="table">
             <thead>
                 <tr>
                     <th>Prodotto</th>
@@ -133,11 +131,11 @@ async function loadBundles(cart, bundleContainer){
                 </tr>
             </thead>
             <tbody id="${i}-cart-body"></tbody>
-        </table>`;
+        </table></div>`;
       bundleContainer.appendChild(container);
       table = document.getElementById(`${i}-cart-body`);
-      price += await loadProducts(cart[i].products, table, true);
-      totalPrice += price;
+      price = await loadProducts(cart[i].products, table, true);
+      totalPrice += parseFloat(bundle.price);
       container.innerHTML += `<p class="text-end">
             <strong>Totale parziale: </strong><s>€${price.toFixed(2)}</s>
             €${bundle.price}

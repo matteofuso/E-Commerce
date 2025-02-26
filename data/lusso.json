@@ -17,7 +17,13 @@
                 "immagini": ["images/9.jpeg"]
             }
         ],
-        "taglie": []
+        "taglie": [],
+        "caratteristiche": [
+            {"titolo": "Impermeabilità", "descrizione": "300 metri"},
+            {"titolo": "Movimento", "descrizione": "Meccanico a carica automatica"},
+            {"titolo": "Materiale", "descrizione": "Acciaio e ceramica"},
+            {"titolo": "Peso", "descrizione": "150g"}
+        ]
     },
     {
         "id": "l2",
@@ -37,7 +43,13 @@
                 "immagini": ["images/8.jpeg"]
             }
         ],
-        "taglie": []
+        "taglie": [],
+        "caratteristiche": [
+            {"titolo": "Impermeabilità", "descrizione": "50 metri"},
+            {"titolo": "Movimento", "descrizione": "Cronografo manuale"},
+            {"titolo": "Vetro", "descrizione": "Esalite (plexiglass)"},
+            {"titolo": "Diametro", "descrizione": "42mm"}
+        ]
     },
     {
         "id": "l3",
@@ -52,7 +64,13 @@
                 "immagini": ["images/2.jpeg"]
             }
         ],
-        "taglie": []
+        "taglie": [],
+        "caratteristiche": [
+            {"titolo": "Movimento", "descrizione": "Calibre Heuer 02"},
+            {"titolo": "Riserva di carica", "descrizione": "80 ore"},
+            {"titolo": "Materiale cassa", "descrizione": "Acciaio lucido"},
+            {"titolo": "Peso", "descrizione": "130g"}
+        ]
     },
     {
         "id": "l4",
@@ -67,7 +85,13 @@
                 "immagini": ["images/12.jpeg"]
             }
         ],
-        "taglie": []
+        "taglie": [],
+        "caratteristiche": [
+            {"titolo": "Movimento", "descrizione": "Meccanico automatico Calibre 26-330 S C"},
+            {"titolo": "Materiale", "descrizione": "Acciaio inossidabile"},
+            {"titolo": "Riserva di carica", "descrizione": "45 ore"},
+            {"titolo": "Spessore", "descrizione": "8.3mm"}
+        ]
     },
     {
         "id": "l5",
@@ -87,7 +111,13 @@
                 "immagini": ["images/4.jpeg"]
             }
         ],
-        "taglie": []
+        "taglie": [],
+        "caratteristiche": [
+            {"titolo": "Diametro", "descrizione": "41mm"},
+            {"titolo": "Movimento", "descrizione": "Calibro 4302 automatico"},
+            {"titolo": "Quadrante", "descrizione": "Motivo 'Grande Tapisserie'"},
+            {"titolo": "Resistenza all'acqua", "descrizione": "50 metri"}
+        ]
     },
     {
         "id": "l6",
@@ -102,7 +132,13 @@
                 "immagini": ["images/5.jpeg"]
             }
         ],
-        "taglie": []
+        "taglie": [],
+        "caratteristiche": [
+            {"titolo": "Materiale", "descrizione": "Oro rosa 18k"},
+            {"titolo": "Movimento", "descrizione": "Calibro 1847 MC"},
+            {"titolo": "Lunetta", "descrizione": "Viti visibili"},
+            {"titolo": "Peso", "descrizione": "140g"}
+        ]
     },
     {
         "id": "l7",
@@ -117,7 +153,13 @@
                 "immagini": ["images/11.jpeg"]
             }
         ],
-        "taglie": []
+        "taglie": [],
+        "caratteristiche": [
+            {"titolo": "Diametro", "descrizione": "43mm"},
+            {"titolo": "Movimento", "descrizione": "Calibro B01 automatico"},
+            {"titolo": "Funzioni", "descrizione": "Cronografo, regolo calcolatore"},
+            {"titolo": "Impermeabilità", "descrizione": "30 metri"}
+        ]
     },
     {
         "id": "l8",
@@ -132,7 +174,13 @@
                 "immagini": ["images/6.jpeg"]
             }
         ],
-        "taglie": []
+        "taglie": [],
+        "caratteristiche": [
+            {"titolo": "Calibro", "descrizione": "69355 di manifattura"},
+            {"titolo": "Riserva di carica", "descrizione": "46 ore"},
+            {"titolo": "Cassa", "descrizione": "Acciaio inossidabile"},
+            {"titolo": "Peso", "descrizione": "125g"}
+        ]
     },
     {
         "id": "l9",
@@ -147,6 +195,12 @@
                 "immagini": ["images/3.jpeg"]
             }
         ],
-        "taglie": ["M", "L"]
+        "taglie": ["M", "L"],
+        "caratteristiche": [
+            {"titolo": "Movimento", "descrizione": "Calibro 5100 automatico"},
+            {"titolo": "Certificazione", "descrizione": "Punzone di Ginevra"},
+            {"titolo": "Bracciale", "descrizione": "Sistema intercambiabile"},
+            {"titolo": "Impermeabilità", "descrizione": "150 metri"}
+        ]
     }
 ]

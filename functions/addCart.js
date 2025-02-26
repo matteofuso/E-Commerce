@@ -13,8 +13,10 @@ const params = new URLSearchParams(window.location.search);
 id = params.getAll("id[]");
 let cart = JSON.parse(localStorage.getItem("cart") || []);
 
+console.log(cart);
+console.log(id.length);
 if (id.length === 1) {
-    console.log("a")
+    console.log("prodotto singolo");
     color = params.get(id + "-color");
     size = params.get(id + "-size");
     prodotto = prodottoJSON(id[0], color, size);
@@ -29,7 +31,7 @@ if (id.length === 1) {
     }
     localStorage.setItem("cart", JSON.stringify(cart));
 } else {
-    console.log("b")
+    console.log("bundle");
     bundle_id = params.get("bundle");
     let bundle = {
         id: bundle_id,
@@ -44,4 +46,5 @@ if (id.length === 1) {
     cart.push(bundle);
     localStorage.setItem("cart", JSON.stringify(cart));
 }
+
 window.location.href="carrello.html";
