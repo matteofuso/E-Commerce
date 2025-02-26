@@ -1,28 +1,28 @@
-const header = document.body.getElementsByTagName('header')[0];
+const header = document.body.getElementsByTagName("header")[0];
 const pages = [
-    {
-        name: 'Home',
-        url: 'index.html'
-    },
-    {
-        name: "Orologi Sportivi",
-        url: "prodotti.html?category=sport",
-    },
-    {
-        name: "Orologi di Lusso",
-        url: "prodotti.html?category=lusso",
-    },
-    {
-        name: "Bundle",
-        url: "bundles.html",
-    },
-    {
-        name: "Carello",
-        url: "carrello.html",
-    }
-]
+  {
+    name: "Home",
+    url: "index.html",
+  },
+  {
+    name: "Orologi Sportivi",
+    url: "prodotti.html?category=sport",
+  },
+  {
+    name: "Orologi di Lusso",
+    url: "prodotti.html?category=lusso",
+  },
+  {
+    name: "Bundle",
+    url: "bundles.html",
+  },
+  {
+    name: "Carello",
+    url: "carrello.html",
+  },
+];
 
-header.innerHTML=`<div data-bs-theme="dark" class="bg-body shadow-lg">
+header.innerHTML = `<div data-bs-theme="dark" class="bg-body shadow-lg">
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
         <symbol id="check2" viewBox="0 0 16 16">
             <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -106,18 +106,18 @@ header.innerHTML=`<div data-bs-theme="dark" class="bg-body shadow-lg">
         </div>
     </nav>
 </div>`;
-header.classList.add('sticky-top');
+header.classList.add("sticky-top");
 
-const navbar = document.getElementById('navbar-nav');
+const navbar = document.getElementById("navbar-nav");
 for (const page of pages) {
-    const active = window.location.href.includes(page.url) ? 'active' : '';
-    const li = document.createElement('li');
-    li.classList.add('nav-item', 'mx-2');
-    const a = document.createElement('a');
-    a.classList.add('nav-link');
-    if (active) a.classList.add('active');
-    a.href = page.url;
-    a.textContent = page.name;
-    li.appendChild(a);
-    navbar.appendChild(li);
+  const active = window.location.href.includes(page.url) ? "active" : "";
+  const li = document.createElement("li");
+  li.classList.add("nav-item", "mx-2");
+  const a = document.createElement("a");
+  a.classList.add("nav-link");
+  if (active) a.classList.add("active");
+  a.href = page.url;
+  a.textContent = page.name;
+  li.appendChild(a);
+  navbar.appendChild(li);
 }

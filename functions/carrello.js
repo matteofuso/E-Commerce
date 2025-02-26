@@ -45,9 +45,10 @@ async function loadCart() {
   cartBody.innerHTML = "";
   bundleContainer.innerHTML = "";
   total = await loadProducts(cart, cartBody);
-  document.getElementById("total").innerHTML = "<strong>Totale parziale: </strong>€" + total.toFixed(2);
+  document.getElementById("total").innerHTML =
+    "<strong>Totale parziale: </strong>€" + total.toFixed(2);
   total += await loadBundles(cart, bundleContainer);
-  
+
   // Get applied discount percentage
   const appliedDiscount = JSON.parse(
     localStorage.getItem("appliedDiscount")
@@ -86,31 +87,46 @@ async function loadProducts(cart, cartBody, minimal = false) {
 
     // Display individual product
     const itemTotal = parseFloat(prodotto.prezzo) * item.quantity;
-    total += itemTotal
+    total += itemTotal;
     row.innerHTML = `
                 <td>${prodotto.marca} ${prodotto.modello}</td>
                 <td>${item.color}</td>
                 <td>${item.size ?? "Taglia Unica"}</td>
-                ${!minimal ? "<td><input type=\"number\" min=\"1\" value=\"" + item.quantity + "\" \
-                  class=\"form-control\" onchange=\"updateQuantity('" + item.id + "', this.value)\">" : ""}
+                ${
+                  !minimal
+                    ? '<td><input type="number" min="1" value="' +
+                      item.quantity +
+                      '" \
+                  class="form-control" onchange="updateQuantity(\'' +
+                      item.id +
+                      "', this.value)\">"
+                    : ""
+                }
                 </td>
                 <td>€${parseFloat(prodotto.prezzo).toFixed(2)}</td>
-                ${!minimal ? "<td>€" + itemTotal.toFixed(2)+ "</td>" : ""}
-                ${!minimal ? "<td><button class=\"btn btn-danger btn-sm\" onclick=\"\
-                  removeItem('"+item.id+"')\">X</button></td>" : ""}
+                ${!minimal ? "<td>€" + itemTotal.toFixed(2) + "</td>" : ""}
+                ${
+                  !minimal
+                    ? '<td><button class="btn btn-danger btn-sm" onclick="\
+                  removeItem(\'' +
+                      item.id +
+                      "')\">X</button></td>"
+                    : ""
+                }
             `;
 
     cartBody.appendChild(row);
   }
 
-  if (total == 0){
-    cartBody.innerHTML += "<td colspan=\"7\" class=\"text-center\">Non ci sono prodotti in questa sezione</td>";
+  if (total == 0) {
+    cartBody.innerHTML +=
+      '<td colspan="7" class="text-center">Non ci sono prodotti in questa sezione</td>';
   }
 
   return total;
 }
 
-async function loadBundles(cart, bundleContainer){
+async function loadBundles(cart, bundleContainer) {
   const response = await fetch(`data/bundles.json`);
   const data = await response.json();
   let totalPrice = 0;

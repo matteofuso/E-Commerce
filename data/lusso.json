@@ -1,206 +1,209 @@
 [
-    {
-        "id": "l1",
-        "marca": "Rolex",
-        "modello": "Submariner",
-        "descrizione": "Orologio di lusso subacqueo con cassa in acciaio e lunetta in ceramica.",
-        "prezzo": "10999.99",
-        "colori": [
-            {
-                "nome": "nero",
-                "codice": "#000000",
-                "immagini": ["images/7.jpeg"]
-            },
-            {
-                "nome": "verde",
-                "codice": "#008000",
-                "immagini": ["images/9.jpeg"]
-            }
-        ],
-        "taglie": [],
-        "caratteristiche": [
-            {"titolo": "Impermeabilità", "descrizione": "300 metri"},
-            {"titolo": "Movimento", "descrizione": "Meccanico a carica automatica"},
-            {"titolo": "Materiale", "descrizione": "Acciaio e ceramica"},
-            {"titolo": "Peso", "descrizione": "150g"}
-        ]
-    },
-    {
-        "id": "l2",
-        "marca": "Omega",
-        "modello": "Speedmaster Professional",
-        "descrizione": "L'iconico orologio indossato dagli astronauti sulla Luna.",
-        "prezzo": "7499.99",
-        "colori": [
-            {
-                "nome": "nero",
-                "codice": "#000000",
-                "immagini": ["images/1.jpeg"]
-            },
-            {
-                "nome": "argento",
-                "codice": "#C0C0C0",
-                "immagini": ["images/8.jpeg"]
-            }
-        ],
-        "taglie": [],
-        "caratteristiche": [
-            {"titolo": "Impermeabilità", "descrizione": "50 metri"},
-            {"titolo": "Movimento", "descrizione": "Cronografo manuale"},
-            {"titolo": "Vetro", "descrizione": "Esalite (plexiglass)"},
-            {"titolo": "Diametro", "descrizione": "42mm"}
-        ]
-    },
-    {
-        "id": "l3",
-        "marca": "Tag Heuer",
-        "modello": "Carrera Chronograph",
-        "descrizione": "Cronografo sportivo di lusso ispirato al mondo delle corse automobilistiche.",
-        "prezzo": "5999.99",
-        "colori": [
-            {
-                "nome": "nero",
-                "codice": "#000000",
-                "immagini": ["images/2.jpeg"]
-            }
-        ],
-        "taglie": [],
-        "caratteristiche": [
-            {"titolo": "Movimento", "descrizione": "Calibre Heuer 02"},
-            {"titolo": "Riserva di carica", "descrizione": "80 ore"},
-            {"titolo": "Materiale cassa", "descrizione": "Acciaio lucido"},
-            {"titolo": "Peso", "descrizione": "130g"}
-        ]
-    },
-    {
-        "id": "l4",
-        "marca": "Patek Philippe",
-        "modello": "Nautilus",
-        "descrizione": "Orologio elegante con design iconico e meccanismo automatico.",
-        "prezzo": "39999.99",
-        "colori": [
-            {
-                "nome": "blu",
-                "codice": "#0000FF",
-                "immagini": ["images/12.jpeg"]
-            }
-        ],
-        "taglie": [],
-        "caratteristiche": [
-            {"titolo": "Movimento", "descrizione": "Meccanico automatico Calibre 26-330 S C"},
-            {"titolo": "Materiale", "descrizione": "Acciaio inossidabile"},
-            {"titolo": "Riserva di carica", "descrizione": "45 ore"},
-            {"titolo": "Spessore", "descrizione": "8.3mm"}
-        ]
-    },
-    {
-        "id": "l5",
-        "marca": "Audemars Piguet",
-        "modello": "Royal Oak",
-        "descrizione": "Orologio di lusso con cassa in acciaio e design sportivo raffinato.",
-        "prezzo": "29999.99",
-        "colori": [
-            {
-                "nome": "blu",
-                "codice": "#0000FF",
-                "immagini": ["images/10.jpeg"]
-            },
-            {
-                "nome": "grigio",
-                "codice": "#808080",
-                "immagini": ["images/4.jpeg"]
-            }
-        ],
-        "taglie": [],
-        "caratteristiche": [
-            {"titolo": "Diametro", "descrizione": "41mm"},
-            {"titolo": "Movimento", "descrizione": "Calibro 4302 automatico"},
-            {"titolo": "Quadrante", "descrizione": "Motivo 'Grande Tapisserie'"},
-            {"titolo": "Resistenza all'acqua", "descrizione": "50 metri"}
-        ]
-    },
-    {
-        "id": "l6",
-        "marca": "Cartier",
-        "modello": "Santos",
-        "descrizione": "Orologio di lusso con quadrante raffinato e cassa in oro rosa.",
-        "prezzo": "18999.99",
-        "colori": [
-            {
-                "nome": "oro rosa",
-                "codice": "#FFC0CB",
-                "immagini": ["images/5.jpeg"]
-            }
-        ],
-        "taglie": [],
-        "caratteristiche": [
-            {"titolo": "Materiale", "descrizione": "Oro rosa 18k"},
-            {"titolo": "Movimento", "descrizione": "Calibro 1847 MC"},
-            {"titolo": "Lunetta", "descrizione": "Viti visibili"},
-            {"titolo": "Peso", "descrizione": "140g"}
-        ]
-    },
-    {
-        "id": "l7",
-        "marca": "Breitling",
-        "modello": "Navitimer B01",
-        "descrizione": "Cronografo di lusso con movimento di manifattura e scala logaritmica.",
-        "prezzo": "8499.99",
-        "colori": [
-            {
-                "nome": "nero",
-                "codice": "#000000",
-                "immagini": ["images/11.jpeg"]
-            }
-        ],
-        "taglie": [],
-        "caratteristiche": [
-            {"titolo": "Diametro", "descrizione": "43mm"},
-            {"titolo": "Movimento", "descrizione": "Calibro B01 automatico"},
-            {"titolo": "Funzioni", "descrizione": "Cronografo, regolo calcolatore"},
-            {"titolo": "Impermeabilità", "descrizione": "30 metri"}
-        ]
-    },
-    {
-        "id": "l8",
-        "marca": "IWC",
-        "modello": "Portugieser Chronograph",
-        "descrizione": "Cronografo di lusso con design classico e movimento automatico.",
-        "prezzo": "7999.99",
-        "colori": [
-            {
-                "nome": "argento",
-                "codice": "#C0C0C0",
-                "immagini": ["images/6.jpeg"]
-            }
-        ],
-        "taglie": [],
-        "caratteristiche": [
-            {"titolo": "Calibro", "descrizione": "69355 di manifattura"},
-            {"titolo": "Riserva di carica", "descrizione": "46 ore"},
-            {"titolo": "Cassa", "descrizione": "Acciaio inossidabile"},
-            {"titolo": "Peso", "descrizione": "125g"}
-        ]
-    },
-    {
-        "id": "l9",
-        "marca": "Vacheron Constantin",
-        "modello": "Overseas",
-        "descrizione": "Orologio sportivo di lusso con movimento di alta precisione.",
-        "prezzo": "25999.99",
-        "colori": [
-            {
-                "nome": "blu",
-                "codice": "#0000FF",
-                "immagini": ["images/3.jpeg"]
-            }
-        ],
-        "taglie": ["M", "L"],
-        "caratteristiche": [
-            {"titolo": "Movimento", "descrizione": "Calibro 5100 automatico"},
-            {"titolo": "Certificazione", "descrizione": "Punzone di Ginevra"},
-            {"titolo": "Bracciale", "descrizione": "Sistema intercambiabile"},
-            {"titolo": "Impermeabilità", "descrizione": "150 metri"}
-        ]
-    }
+  {
+    "id": "l1",
+    "marca": "Rolex",
+    "modello": "Submariner",
+    "descrizione": "Orologio di lusso subacqueo con cassa in acciaio e lunetta in ceramica.",
+    "prezzo": "10999.99",
+    "colori": [
+      {
+        "nome": "nero",
+        "codice": "#000000",
+        "immagini": ["images/7.jpeg"]
+      },
+      {
+        "nome": "verde",
+        "codice": "#008000",
+        "immagini": ["images/9.jpeg"]
+      }
+    ],
+    "taglie": [],
+    "caratteristiche": [
+      { "titolo": "Impermeabilità", "descrizione": "300 metri" },
+      { "titolo": "Movimento", "descrizione": "Meccanico a carica automatica" },
+      { "titolo": "Materiale", "descrizione": "Acciaio e ceramica" },
+      { "titolo": "Peso", "descrizione": "150g" }
+    ]
+  },
+  {
+    "id": "l2",
+    "marca": "Omega",
+    "modello": "Speedmaster Professional",
+    "descrizione": "L'iconico orologio indossato dagli astronauti sulla Luna.",
+    "prezzo": "7499.99",
+    "colori": [
+      {
+        "nome": "nero",
+        "codice": "#000000",
+        "immagini": ["images/1.jpeg"]
+      },
+      {
+        "nome": "argento",
+        "codice": "#C0C0C0",
+        "immagini": ["images/8.jpeg"]
+      }
+    ],
+    "taglie": [],
+    "caratteristiche": [
+      { "titolo": "Impermeabilità", "descrizione": "50 metri" },
+      { "titolo": "Movimento", "descrizione": "Cronografo manuale" },
+      { "titolo": "Vetro", "descrizione": "Esalite (plexiglass)" },
+      { "titolo": "Diametro", "descrizione": "42mm" }
+    ]
+  },
+  {
+    "id": "l3",
+    "marca": "Tag Heuer",
+    "modello": "Carrera Chronograph",
+    "descrizione": "Cronografo sportivo di lusso ispirato al mondo delle corse automobilistiche.",
+    "prezzo": "5999.99",
+    "colori": [
+      {
+        "nome": "nero",
+        "codice": "#000000",
+        "immagini": ["images/2.jpeg"]
+      }
+    ],
+    "taglie": [],
+    "caratteristiche": [
+      { "titolo": "Movimento", "descrizione": "Calibre Heuer 02" },
+      { "titolo": "Riserva di carica", "descrizione": "80 ore" },
+      { "titolo": "Materiale cassa", "descrizione": "Acciaio lucido" },
+      { "titolo": "Peso", "descrizione": "130g" }
+    ]
+  },
+  {
+    "id": "l4",
+    "marca": "Patek Philippe",
+    "modello": "Nautilus",
+    "descrizione": "Orologio elegante con design iconico e meccanismo automatico.",
+    "prezzo": "39999.99",
+    "colori": [
+      {
+        "nome": "blu",
+        "codice": "#0000FF",
+        "immagini": ["images/12.jpeg"]
+      }
+    ],
+    "taglie": [],
+    "caratteristiche": [
+      {
+        "titolo": "Movimento",
+        "descrizione": "Meccanico automatico Calibre 26-330 S C"
+      },
+      { "titolo": "Materiale", "descrizione": "Acciaio inossidabile" },
+      { "titolo": "Riserva di carica", "descrizione": "45 ore" },
+      { "titolo": "Spessore", "descrizione": "8.3mm" }
+    ]
+  },
+  {
+    "id": "l5",
+    "marca": "Audemars Piguet",
+    "modello": "Royal Oak",
+    "descrizione": "Orologio di lusso con cassa in acciaio e design sportivo raffinato.",
+    "prezzo": "29999.99",
+    "colori": [
+      {
+        "nome": "blu",
+        "codice": "#0000FF",
+        "immagini": ["images/10.jpeg"]
+      },
+      {
+        "nome": "grigio",
+        "codice": "#808080",
+        "immagini": ["images/4.jpeg"]
+      }
+    ],
+    "taglie": [],
+    "caratteristiche": [
+      { "titolo": "Diametro", "descrizione": "41mm" },
+      { "titolo": "Movimento", "descrizione": "Calibro 4302 automatico" },
+      { "titolo": "Quadrante", "descrizione": "Motivo 'Grande Tapisserie'" },
+      { "titolo": "Resistenza all'acqua", "descrizione": "50 metri" }
+    ]
+  },
+  {
+    "id": "l6",
+    "marca": "Cartier",
+    "modello": "Santos",
+    "descrizione": "Orologio di lusso con quadrante raffinato e cassa in oro rosa.",
+    "prezzo": "18999.99",
+    "colori": [
+      {
+        "nome": "oro rosa",
+        "codice": "#FFC0CB",
+        "immagini": ["images/5.jpeg"]
+      }
+    ],
+    "taglie": [],
+    "caratteristiche": [
+      { "titolo": "Materiale", "descrizione": "Oro rosa 18k" },
+      { "titolo": "Movimento", "descrizione": "Calibro 1847 MC" },
+      { "titolo": "Lunetta", "descrizione": "Viti visibili" },
+      { "titolo": "Peso", "descrizione": "140g" }
+    ]
+  },
+  {
+    "id": "l7",
+    "marca": "Breitling",
+    "modello": "Navitimer B01",
+    "descrizione": "Cronografo di lusso con movimento di manifattura e scala logaritmica.",
+    "prezzo": "8499.99",
+    "colori": [
+      {
+        "nome": "nero",
+        "codice": "#000000",
+        "immagini": ["images/11.jpeg"]
+      }
+    ],
+    "taglie": [],
+    "caratteristiche": [
+      { "titolo": "Diametro", "descrizione": "43mm" },
+      { "titolo": "Movimento", "descrizione": "Calibro B01 automatico" },
+      { "titolo": "Funzioni", "descrizione": "Cronografo, regolo calcolatore" },
+      { "titolo": "Impermeabilità", "descrizione": "30 metri" }
+    ]
+  },
+  {
+    "id": "l8",
+    "marca": "IWC",
+    "modello": "Portugieser Chronograph",
+    "descrizione": "Cronografo di lusso con design classico e movimento automatico.",
+    "prezzo": "7999.99",
+    "colori": [
+      {
+        "nome": "argento",
+        "codice": "#C0C0C0",
+        "immagini": ["images/6.jpeg"]
+      }
+    ],
+    "taglie": [],
+    "caratteristiche": [
+      { "titolo": "Calibro", "descrizione": "69355 di manifattura" },
+      { "titolo": "Riserva di carica", "descrizione": "46 ore" },
+      { "titolo": "Cassa", "descrizione": "Acciaio inossidabile" },
+      { "titolo": "Peso", "descrizione": "125g" }
+    ]
+  },
+  {
+    "id": "l9",
+    "marca": "Vacheron Constantin",
+    "modello": "Overseas",
+    "descrizione": "Orologio sportivo di lusso con movimento di alta precisione.",
+    "prezzo": "25999.99",
+    "colori": [
+      {
+        "nome": "blu",
+        "codice": "#0000FF",
+        "immagini": ["images/3.jpeg"]
+      }
+    ],
+    "taglie": ["M", "L"],
+    "caratteristiche": [
+      { "titolo": "Movimento", "descrizione": "Calibro 5100 automatico" },
+      { "titolo": "Certificazione", "descrizione": "Punzone di Ginevra" },
+      { "titolo": "Bracciale", "descrizione": "Sistema intercambiabile" },
+      { "titolo": "Impermeabilità", "descrizione": "150 metri" }
+    ]
+  }
 ]

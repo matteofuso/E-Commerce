@@ -1,85 +1,85 @@
 .btn-bd-primary {
-    --bd-violet-bg: #712cf9;
-    --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+  --bd-violet-bg: #712cf9;
+  --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
 
-    --bs-btn-font-weight: 600;
-    --bs-btn-color: var(--bs-white);
-    --bs-btn-bg: var(--bd-violet-bg);
-    --bs-btn-border-color: var(--bd-violet-bg);
-    --bs-btn-hover-color: var(--bs-white);
-    --bs-btn-hover-bg: #6528e0;
-    --bs-btn-hover-border-color: #6528e0;
-    --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
-    --bs-btn-active-color: var(--bs-btn-hover-color);
-    --bs-btn-active-bg: #5a23c8;
-    --bs-btn-active-border-color: #5a23c8;
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: var(--bd-violet-bg);
+  --bs-btn-border-color: var(--bd-violet-bg);
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: #6528e0;
+  --bs-btn-hover-border-color: #6528e0;
+  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: #5a23c8;
+  --bs-btn-active-border-color: #5a23c8;
 }
 
 .bd-mode-toggle .dropdown-menu .active .bi {
-   display: block !important;
+  display: block !important;
 }
 
 .bi {
-   width: 1em;
-   height: 1em;
-   vertical-align: -.125em;
-   fill: currentColor;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  fill: currentColor;
 }
 
-.hero-bg{
-   background-image: url('../images/hero.jpeg');
-   background-size: cover;
-   background-position: center;
-   background-repeat: no-repeat;
+.hero-bg {
+  background-image: url("../images/hero.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.hero-opacity{
-   background-color: rgba(0, 0, 0, 0.5);
+.hero-opacity {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-.card{
-   width: 16rem;
+.card {
+  width: 16rem;
 }
 
 .color-picker-container {
-   display: flex;
-   flex-wrap: wrap;
-   gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 .color-element {
-   width: 40px;
-   height: 40px;
-   border-radius: 50%;
-   cursor: pointer;
-   margin-bottom: 5px;
-   border: 6px solid var(--bs-body-bg);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-bottom: 5px;
+  border: 6px solid var(--bs-body-bg);
 }
 
 input[type="radio"]:checked + label .color-element {
-   border: none;
+  border: none;
 }
 
 .color-box {
-   display: inline-block;
-   text-align: center;
+  display: inline-block;
+  text-align: center;
 }
 .color-box label {
-   display: block;
-   margin-top: 5px;
-   font-weight: bold;
+  display: block;
+  margin-top: 5px;
+  font-weight: bold;
 }
 .product-image {
-   max-width: 90%;
-   margin: 0 auto;
+  max-width: 90%;
+  margin: 0 auto;
 }
 .product-details {
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
 }
 
 .control-overflow {
-   width: 100%;
-   overflow-x: auto;
+  width: 100%;
+  overflow-x: auto;
 }
