@@ -26,12 +26,19 @@ async function loadBundle() {
         prezzo_totale += parseFloat(prodotto.prezzo);
     }
 
-    console.log(prezzo_totale);
+    // Add products from the bundle to the cart
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    for (const productId of selectedBundle.products) {
+        const product = { id: productId, quantity: 1 }; // Assuming quantity is 1 for each product
+        cart.push(product);
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
 
     // Display bundle details
     document.getElementById("bundle-name").innerText = selectedBundle.name;
     document.getElementById("bundle-description").innerText = selectedBundle.description;
     document.getElementById("bundle-price").innerHTML = `<strong>Prezzo:</strong> <s>${prezzo_totale.toFixed(2)}</s> €${selectedBundle.price} €`;
+    document.getElementById("bundle-id").value = selectedBundle.id;
 }
 
 // Call loadBundle to execute on page load

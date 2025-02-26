@@ -31,6 +31,7 @@ async function loadProdotto(id, parent, button = true) {
                         <select class="form-select" id="size" name="${id}-size"></select>
                     </div>
                     ${button === true ? "<button type=\"submit\" class=\"btn btn-primary\">Aggiungi al Carrello</button>" : ""}
+                    <input type="hidden" name="id[]" value="${id}">
                 </div>`;
   const file = id.startsWith("s") ? "sport.json" : "lusso.json";
   const response = await fetch(`data/${file}`);
