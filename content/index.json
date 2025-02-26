@@ -1,0 +1,25 @@
+{
+    "hero": {
+        "title": "Benvenuti su Aeternum",
+        "subtitle": "Scopri la nostra collezione di orologi esclusivi. Eleganza senza tempo.",
+        "explore": "Esplora ora"
+    },
+    "collections": {
+        "title": "Le nostre collezioni",
+        "discover": "Scopri di più",
+        "cards": [
+            {
+                "image": "images/eleganti.jpeg",
+                "title": "Orologi di Lusso",
+                "description": "Scopri i nostri orologi di lusso per un tocco di classe e raffinatezza.",
+                "link": "prodotti.html?category=lusso"
+            },
+            {
+                "image": "images/sportivi.jpeg",
+                "title": "Orologi Sportivi",
+                "description": "Affronta ogni sfida con stile grazie ai nostri orologi sportivi di alta qualità.",
+                "link": "prodotti.html?category=sport"
+            }
+        ]
+    }
+}

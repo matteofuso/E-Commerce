@@ -1,0 +1,21 @@
+{
+  "title": "Carrello",
+  "description": "Visualizza e gestisci i prodotti presenti nel tuo carrello.",
+  "table": {
+    "product": "Prodotto",
+    "color": "Colore",
+    "size": "Taglia",
+    "quantity": "Quantità",
+    "price": "Prezzo",
+    "total": "Totale",
+    "remove": "Rimuovi"
+  },
+  "bundle-title": "I tuoi bundles",
+  "discount-code": "Codice Sconto",
+  "discount-apply": "Applica",
+  "code-placeholder": "Inserisci il tuo codice sconto",
+  "provisional-total": "Totale provvisorio",
+  "total": "Totale",
+  "discount": "Sconto applicato",
+  "checkout": "Procedi al Checkout"
+}

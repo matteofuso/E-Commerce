@@ -243,7 +243,6 @@ async function loadBundles(cart, bundleContainer) {
               </table>
             </div>
             <div class="d-flex justify-content-end align-items-center gap-2 mt-3">
-              <div class="text-muted text-decoration-line-through">€${await loadProducts(cart[i].products, document.createElement('div'), true).then(price => price.toFixed(2))}</div>
               <div class="badge bg-success p-2 fs-6">Risparmi ${((await loadProducts(cart[i].products, document.createElement('div'), true) - parseFloat(bundle.price)).toFixed(2))}€</div>
               <div class="fs-5 fw-bold ms-2">€${parseFloat(bundle.price).toFixed(2)}</div>
             </div>
