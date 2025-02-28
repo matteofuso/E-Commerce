@@ -11,7 +11,7 @@ function prodottoJSON(id, color, size, quantity = 1) {
 // Recupera i parametri dall'URL
 const params = new URLSearchParams(window.location.search);
 id = params.getAll("id[]");
-let cart = JSON.parse(localStorage.getItem("cart") || []);
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 console.log(cart);
 console.log(id.length);
