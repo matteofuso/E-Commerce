@@ -9,7 +9,7 @@
       {
         "nome": "nero",
         "codice": "#000000",
-        "immagini": ["images/1.jpeg"]
+        "immagini": ["images/1.jpeg", "images/2.jpeg"]
       },
       {
         "nome": "blu",

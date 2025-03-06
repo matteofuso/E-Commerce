@@ -64,7 +64,7 @@ async function loadCart() {
 
 async function loadProducts(cart, cartBody, minimal = false) {
   let total = 0;
-  
+
   // Funzione per recuperare i dettagli del prodotto
   async function getProductDetails(id) {
     const file = id.startsWith("s")
@@ -76,19 +76,6 @@ async function loadProducts(cart, cartBody, minimal = false) {
     const data = await fetchJSON(`data/${file}`);
     return data.find((p) => p.id === id);
   }
-  
-  // Se non ci sono prodotti nel carrello
-  if (cart.length === 0) {
-    cartBody.innerHTML = `
-      <tr>
-        <td colspan="${minimal ? 4 : 7}" class="text-center py-4">
-          <div class="alert alert-info mb-0">
-            <i class="bi bi-cart-x me-2"></i>Non ci sono prodotti in questa sezione
-          </div>
-        </td>
-      </tr>`;
-    return total;
-  }
 
   // Popola gli elementi del carrello
   for (let item of cart) {
@@ -97,23 +84,26 @@ async function loadProducts(cart, cartBody, minimal = false) {
 
     const itemTotal = parseFloat(prodotto.prezzo) * item.quantity;
     total += itemTotal;
-    
+
     // Trova i dettagli del colore selezionato
-    const colorDetails = prodotto.colori.find(c => c.nome.toLowerCase() === item.color.toLowerCase());
+    const colorDetails = prodotto.colori.find(
+      (c) => c.nome.toLowerCase() === item.color.toLowerCase()
+    );
     const colorCode = colorDetails ? colorDetails.codice : "#cccccc";
-    const productImage = colorDetails && colorDetails.immagini && colorDetails.immagini.length > 0 
-      ? colorDetails.immagini[0] 
-      : null;
-    
+    const productImage =
+      colorDetails && colorDetails.immagini && colorDetails.immagini.length > 0
+        ? colorDetails.immagini[0]
+        : null;
+
     const row = document.createElement("tr");
-    
+
     // Aggiungi classe hover per effetto al passaggio del mouse
     row.classList.add("align-middle");
-    
+
     // Costruisci la cella per il prodotto con immagine se disponibile
     let productCell = `<td>
       <div class="d-flex align-items-center">`;
-    
+
     // Se il prodotto ha un'immagine
     if (productImage) {
       productCell += `<img src="${productImage}" alt="${prodotto.marca} ${prodotto.modello}" class="me-3" width="60" height="60" style="object-fit: cover; border-radius: 4px;">`;
@@ -123,14 +113,14 @@ async function loadProducts(cart, cartBody, minimal = false) {
         <i class="bi bi-box text-secondary"></i>
       </div>`;
     }
-    
+
     // Nome del prodotto
     productCell += `<div>
         <span class="fw-medium">${prodotto.marca}</span>
         <div class="small text-secondary">${prodotto.modello}</div>
       </div>
     </div></td>`;
-    
+
     // Cella per il colore con il codice colore effettivo
     const colorCell = `<td>
       <div class="d-flex align-items-center">
@@ -138,33 +128,43 @@ async function loadProducts(cart, cartBody, minimal = false) {
         ${item.color}
       </div>
     </td>`;
-    
+
     // Cella per la taglia
-    const sizeCell = `<td><span class="badge bg-light text-dark">${item.size ?? "Taglia Unica"}</span></td>`;
-    
+    const sizeCell = `<td><span class="badge bg-light text-dark">${
+      item.size ?? "Taglia Unica"
+    }</span></td>`;
+
     // Celle aggiuntive se non in modalità minimal
     let quantityCell = "";
     let priceCell = "";
     let totalCell = "";
     let actionCell = "";
-    
+
     if (!minimal) {
       // Cella per la quantità
       quantityCell = `<td>
         <div class="input-group input-group-sm" style="max-width: 120px;">
-          <button class="btn btn-outline-secondary" type="button" onclick="updateQuantity('${item.id}', Math.max(1, ${item.quantity - 1}))">-</button>
-          <input type="number" min="1" value="${item.quantity}" class="form-control text-center" 
+          <button class="btn btn-outline-secondary" type="button" onclick="updateQuantity('${
+            item.id
+          }', Math.max(1, ${item.quantity - 1}))">-</button>
+          <input type="number" min="1" value="${
+            item.quantity
+          }" class="form-control text-center" 
             onchange="updateQuantity('${item.id}', this.value)">
-          <button class="btn btn-outline-secondary" type="button" onclick="updateQuantity('${item.id}', ${item.quantity + 1})">+</button>
+          <button class="btn btn-outline-secondary" type="button" onclick="updateQuantity('${
+            item.id
+          }', ${item.quantity + 1})">+</button>
         </div>
       </td>`;
-      
+
       // Cella per il prezzo unitario
-      priceCell = `<td class="text-end">€${parseFloat(prodotto.prezzo).toFixed(2)}</td>`;
-      
+      priceCell = `<td class="text-end">€${parseFloat(prodotto.prezzo).toFixed(
+        2
+      )}</td>`;
+
       // Cella per il prezzo totale
       totalCell = `<td class="text-end fw-bold">€${itemTotal.toFixed(2)}</td>`;
-      
+
       // Cella per le azioni
       actionCell = `<td class="text-center">
         <button class="btn btn-outline-danger btn-sm" onclick="removeItem('${item.id}')">
@@ -173,19 +173,34 @@ async function loadProducts(cart, cartBody, minimal = false) {
       </td>`;
     } else {
       // In modalità minimal, mostra solo il prezzo
-      priceCell = `<td class="text-end">€${parseFloat(prodotto.prezzo).toFixed(2)}</td>`;
+      priceCell = `<td class="text-end">€${parseFloat(prodotto.prezzo).toFixed(
+        2
+      )}</td>`;
     }
-    
+
     // Combina tutte le celle
     row.innerHTML = productCell + colorCell + sizeCell;
-    
+
     if (!minimal) {
       row.innerHTML += quantityCell + priceCell + totalCell + actionCell;
     } else {
       row.innerHTML += priceCell;
     }
-    
+
     cartBody.appendChild(row);
+  }
+
+  // Se non ci sono prodotti nel carrello
+  if (total === 0) {
+    cartBody.innerHTML = `
+        <tr>
+          <td colspan="${minimal ? 4 : 7}" class="text-center py-4">
+            <div class="alert alert-info mb-0">
+              <i class="bi bi-cart-x me-2"></i>Non ci sono prodotti in questa sezione
+            </div>
+          </td>
+        </tr>`;
+    return total;
   }
 
   return total;
@@ -194,10 +209,10 @@ async function loadProducts(cart, cartBody, minimal = false) {
 async function loadBundles(cart, bundleContainer) {
   const data = await fetchJSON("data/bundles.json");
   let totalPrice = 0;
-  
+
   // Verifica se ci sono bundle nel carrello
-  const hasBundles = cart.some(item => item.id.startsWith("b"));
-  
+  const hasBundles = cart.some((item) => item.id.startsWith("b"));
+
   if (hasBundles) {
     // Aggiungi un header per la sezione bundle
     bundleContainer.innerHTML = `
@@ -208,22 +223,24 @@ async function loadBundles(cart, bundleContainer) {
         <div class="card-body" id="bundles-list"></div>
       </div>
     `;
-    
+
     const bundlesList = document.getElementById("bundles-list");
-    
+
     for (let i = 0; i < cart.length; i++) {
       if (cart[i].id.startsWith("b")) {
         const bundle = data.find((b) => b.id === cart[i].id);
-        
+
         // Crea una card per ogni bundle
         const bundleCard = document.createElement("div");
         bundleCard.classList.add("card", "mb-3", "shadow-sm");
-        
+
         // Intestazione del bundle con nome e pulsante di rimozione
         bundleCard.innerHTML = `
           <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0">${bundle.name}</h5>
-            <button class="btn btn-outline-danger btn-sm" onclick="removeItem('${cart[i].id}')">
+            <button class="btn btn-outline-danger btn-sm" onclick="removeItem('${
+              cart[i].id
+            }')">
               <i class="bi bi-trash"></i> Rimuovi
             </button>
           </div>
@@ -243,25 +260,35 @@ async function loadBundles(cart, bundleContainer) {
               </table>
             </div>
             <div class="d-flex justify-content-end align-items-center gap-2 mt-3">
-              <div class="badge bg-success p-2 fs-6">Risparmi ${((await loadProducts(cart[i].products, document.createElement('div'), true) - parseFloat(bundle.price)).toFixed(2))}€</div>
-              <div class="fs-5 fw-bold ms-2">€${parseFloat(bundle.price).toFixed(2)}</div>
+              <div class="badge bg-success p-2 fs-6">Risparmi ${(
+                (await loadProducts(
+                  cart[i].products,
+                  document.createElement("div"),
+                  true
+                )) - parseFloat(bundle.price)
+              ).toFixed(2)}€</div>
+              <div class="fs-5 fw-bold ms-2">€${parseFloat(
+                bundle.price
+              ).toFixed(2)}</div>
             </div>
           </div>
         `;
-        
+
         bundlesList.appendChild(bundleCard);
-        
+
         // Carica i prodotti all'interno del bundle
-        const bundleProductsTable = document.getElementById(`bundle-${i}-products`);
+        const bundleProductsTable = document.getElementById(
+          `bundle-${i}-products`
+        );
         await loadProducts(cart[i].products, bundleProductsTable, true);
-        
+
         totalPrice += parseFloat(bundle.price);
       }
     }
   } else {
     bundleContainer.innerHTML = "";
   }
-  
+
   return totalPrice;
 }
 
@@ -282,7 +309,7 @@ function removeItem(id) {
   loadCart();
 }
 
-function checkout(){
+function checkout() {
   alert("Grazie per il tuo acquisto!");
 }
 

@@ -4,11 +4,11 @@ async function loadProdotto(id, parent, button = true) {
   product.innerHTML = `<div class="col-md-4 my-4">
                   <div id="${id}-carousel" class="carousel slide" data-bs-ride="carousel">
                       <div class="carousel-inner" id="${id}-carousel-images"></div>
-                      <button class="carousel-control-prev" type="button" data-bs-target="#${id}-carousel" data-bs-slide="prev">
+                      <button class="carousel-control-prev d-none" type="button" data-bs-target="#${id}-carousel" data-bs-slide="prev">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Previous</span>
                       </button>
-                      <button class="carousel-control-next" type="button" data-bs-target="#${id}-carousel" data-bs-slide="next">
+                      <button class="carousel-control-next d-none" type="button" data-bs-target="#${id}-carousel" data-bs-slide="next">
                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Next</span>
                       </button>
@@ -129,6 +129,10 @@ function updateCarousel(carousel, images) {
   `
     )
     .join("");
+  carousel.parentElement.querySelectorAll("button").forEach((button) => {
+    if (images.length > 1) button.classList.remove("d-none");
+    else button.classList.add("d-none");
+  });
 }
 
 const params = new URLSearchParams(window.location.search);
