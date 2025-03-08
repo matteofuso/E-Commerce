@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const button = document.createElement("a");
       button.className = "btn btn-primary";
       button.textContent = "Vai al prodotto";
-      button.href = `prodotto.html?id=${prodotto["id"]}`;
+      button.href = `product.php?id=${prodotto["id"]}`;
 
       cardBody.appendChild(title);
       cardBody.appendChild(desc);

@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const button = document.createElement("a");
       button.className = "btn btn-primary";
       button.textContent = "Vedi Bundle";
-      button.href = `bundle.html?id=${bundle.id}`;
+      button.href = `bundle.php?id=${bundle.id}`;
 
       cardBody.appendChild(title);
       cardBody.appendChild(desc);

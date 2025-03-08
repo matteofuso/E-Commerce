@@ -9,7 +9,7 @@
 
 <body>
     <h1>Aspetta un attimo che organizziamo il tuo carrello</h1>
-    <script src="functions/addCart.js"></script>
+    <script src="addCart.js"></script>
 </body>
 
 </html>

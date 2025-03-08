@@ -49,4 +49,4 @@ if (id.length === 1) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-window.location.href = "carrello.html";
+window.location.href = "../cart.php";

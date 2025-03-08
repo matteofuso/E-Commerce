@@ -12,13 +12,13 @@
                 "image": "images/eleganti.jpeg",
                 "title": "Orologi di Lusso",
                 "description": "Scopri i nostri orologi di lusso per un tocco di classe e raffinatezza.",
-                "link": "prodotti.html?category=lusso"
+                "link": "products.php?category=lusso"
             },
             {
                 "image": "images/sportivi.jpeg",
                 "title": "Orologi Sportivi",
                 "description": "Affronta ogni sfida con stile grazie ai nostri orologi sportivi di alta qualità.",
-                "link": "prodotti.html?category=sport"
+                "link": "products.php?category=sport"
             }
         ]
     }
