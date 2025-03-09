@@ -3,7 +3,7 @@
 return [
     'driver' => 'mysql',
     'host' => 'localhost',
-    'dbname' => 'Aeternum',
+    'dbname' => 'aeternum',
     'user' => 'root',
     'password' => '',
 ];

@@ -21,6 +21,4 @@ include 'components/header.php'; ?>
             crossorigin="anonymous"></script>
     <script src="functions/fetch.js"></script>
     <script src="loadContent/index.js"></script>
-    <script src="functions/colormode.js"></script>
-
 <?php include 'components/footer.php'; ?>

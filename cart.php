@@ -45,5 +45,4 @@
     <script src="functions/fetch.js"></script>
     <script src="loadContent/carrello.js"></script>
     <script src="functions/carrello.js"></script>
-    <script src="functions/colormode.js"></script>
 <?php include 'components/footer.php'; ?>

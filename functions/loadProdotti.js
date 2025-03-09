@@ -5,21 +5,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     const fileName = category + ".json";
 
     // Load products
-    const productData = await fetchJSON("data/" + fileName);
+    const productData = await fetchJSON("api/getproducts.php?category=" + category);
     const productContainer = document.querySelector(
       ".d-flex.flex-wrap.justify-content-center"
     );
     productContainer.innerHTML = ""; // Clear container before adding items
 
     // Display individual products
-    productData.forEach((prodotto) => {
+    productData.products.forEach((prodotto) => {
       const card = document.createElement("div");
       card.className = "card m-3 shadow-sm";
       card.style.width = "18rem";
 
       // Product image
       const img = document.createElement("img");
-      img.src = prodotto.colori[0].immagini[0];
+      img.src = prodotto.immagine;
       img.className = "card-img-top";
       img.alt = prodotto.modello;
 

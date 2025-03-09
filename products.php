@@ -10,5 +10,4 @@
     <script src="functions/fetch.js"></script>
     <script src="loadContent/prodotti.js"></script>
     <script src="functions/loadProdotti.js"></script>
-    <script src="functions/colormode.js"></script>
 <?php include 'components/footer.php'; ?>

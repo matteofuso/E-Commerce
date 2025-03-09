@@ -8,5 +8,4 @@
             crossorigin="anonymous"></script>
     <script src="functions/fetch.js"></script>
     <script src="functions/loadProdotto.js"></script>
-    <script src="functions/colormode.js"></script>
 <?php include 'components/footer.php'; ?>

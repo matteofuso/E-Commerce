@@ -10,8 +10,8 @@ $pages = [
     "cart.php" => "Carrello",
 ];
 $main_classes = $main_classes ?? 'container my-4';
-$curr_page = basename($_SERVER['PHP_SELF']);
 $query = $_SERVER['QUERY_STRING'] == '' ? '' : '?' . $_SERVER['QUERY_STRING'];
+$curr_page = basename($_SERVER['PHP_SELF']) . $query;
 ?>
 
 <!doctype html>
@@ -82,7 +82,7 @@ $query = $_SERVER['QUERY_STRING'] == '' ? '' : '?' . $_SERVER['QUERY_STRING'];
                 <ul class="navbar-nav my-3">
                     <?php
                     foreach ($pages as $link => $page) {
-                        $active = $curr_page . $query == $link ? ' active' : '';
+                        $active = $curr_page == $link ? ' active' : '';
                         echo '<li class="nav-item mx-2"><a class="nav-link' . $active .'" href="' . $link . '">' . $page . '</a></li>';
                     }
                     ?>
