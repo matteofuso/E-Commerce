@@ -1,21 +1,21 @@
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     // Load bundles
-    const bundleData = await fetchJSON("data/bundles.json");
+    const bundleData = await fetchJSON("api/getbundles.php");
 
     const productContainer = document.getElementById("product-container");
     productContainer.innerHTML = ""; // Clear container before adding items
 
     // Display bundles first
-    bundleData.forEach((bundle) => {
+    bundleData.bundles.forEach((bundle) => {
       const card = document.createElement("div");
       card.className = "card m-3 shadow-sm bundle-card px-0";
 
       // Bundle image
       const img = document.createElement("img");
-      img.src = bundle.image;
+      img.src = bundle.immagine;
       img.className = "card-img-top";
-      img.alt = bundle.name;
+      img.alt = bundle.nome;
 
       // Card body
       const cardBody = document.createElement("div");
@@ -23,15 +23,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       const title = document.createElement("h5");
       title.className = "card-title";
-      title.textContent = bundle.name;
+      title.textContent = bundle.nome;
 
       const desc = document.createElement("p");
       desc.className = "card-text";
-      desc.textContent = bundle.description;
+      desc.textContent = bundle.descrizione;
 
       const price = document.createElement("p");
       price.className = "card-text";
-      price.innerHTML = `<strong>Prezzo: €${bundle.price}</strong>`;
+      price.innerHTML = `<strong>Prezzo: €${bundle.prezzo}</strong>`;
 
       const button = document.createElement("a");
       button.className = "btn btn-primary";

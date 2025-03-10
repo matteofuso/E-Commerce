@@ -8,32 +8,26 @@ async function loadBundle() {
   }
 
   // Fetch bundle data
-  const bundles = await fetchJSON("data/bundles.json");
-
-  const selectedBundle = bundles.find((bundle) => bundle.id === bundleId);
-  if (!selectedBundle) {
-    console.error("Bundle not found.");
-    return;
-  }
+  const bundle = await fetchJSON("api/bundledetails.php?id=" + bundleId);
 
   let prezzo_totale = 0;
 
   container = document.getElementById("product-container");
-  for (const productId of selectedBundle.products) {
-    prodotto = await loadProdotto(productId, container, false);
+  for (const prodotto of bundle.prodotti) {
+    await loadProdotto(prodotto, container, false);
     prezzo_totale += parseFloat(prodotto.prezzo);
   }
 
   // Display bundle details
-  document.getElementById("bundle-name").innerText = selectedBundle.name;
+  document.getElementById("bundle-name").innerText = bundle.nome;
   document.getElementById("bundle-description").innerText =
-    selectedBundle.description;
+      bundle.descrizione;
   document.getElementById(
     "bundle-price"
   ).innerHTML = `<strong>Prezzo:</strong> <s>${prezzo_totale.toFixed(2)}</s> €${
-    selectedBundle.price
+      bundle.prezzo
   } €`;
-  document.getElementById("bundle-id").value = selectedBundle.id;
+  document.getElementById("bundle-id").value = bundle.id;
 }
 
 // Call loadBundle to execute on page load

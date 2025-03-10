@@ -1,4 +1,3 @@
-
 async function load() {
     const urlParams = new URLSearchParams(window.location.search);
     const category = urlParams.get("category");

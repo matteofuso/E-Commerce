@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     const urlParams = new URLSearchParams(window.location.search);
     const category = urlParams.get("category");
-    const fileName = category + ".json";
 
     // Load products
     const productData = await fetchJSON("api/getproducts.php?category=" + category);
@@ -10,6 +9,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       ".d-flex.flex-wrap.justify-content-center"
     );
     productContainer.innerHTML = ""; // Clear container before adding items
+
+    if (productData.hasOwnProperty("error")) {
+      const error = document.createElement("div");
+      error.className = "alert alert-danger";
+      error.textContent = "Errore nel caricamento dei prodotti";
+      productContainer.appendChild(error);
+      return;
+    }
 
     // Display individual products
     productData.products.forEach((prodotto) => {

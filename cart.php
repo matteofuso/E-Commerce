@@ -37,11 +37,6 @@
         <h3><strong id="supertotal"></strong> - €<span id="cart-total">0.00</span></h3>
     </div>
     <button class="btn btn-primary" onclick="checkout()" id="checkout"></button>
-
-    <!-- Script inclusi -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-            crossorigin="anonymous"></script>
     <script src="functions/fetch.js"></script>
     <script src="loadContent/carrello.js"></script>
     <script src="functions/carrello.js"></script>

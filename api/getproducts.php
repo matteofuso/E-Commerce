@@ -12,7 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $category = $_GET['category'] ?? null;
     $page = $_GET['page'] ?? 1;
     $page_size = $_GET['page_size'] ?? 10;
-    $minimal = $_GET['minimal'] ?? true;
 
     $response = [
         'current_page' => $page,
@@ -50,24 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         }
 
         foreach ($products as $product) {
-            if (!$minimal) {
-                $colori = Database::select("select c.id, c.colore, c.hex from colori c where c.prodotto = :id;", [':id' => $product->id]);
-                $product->colori = $colori;
-
-                foreach ($colori as $colore) {
-                    $taglie = Database::select("select t.taglia, d.disponibili, d.venduti from disponibilita d inner join taglie t ON t.id = d.taglia where d.colore = :id;", [':id' => $colore->id]);
-                    $colore->taglie = $taglie;
-
-                    $immagini = Database::select("select i.uri from immagini i inner join colori c on c.id = i.colore where c.id = :id;", [':id' => $colore->id]);
-                    $colore->immagini = $immagini;
-                }
-
-                $caratteristiche = Database::select("select c2.titolo, c2.descrizione from caratterizzazioni c inner join prodotti p on p.id = c.prodotto inner join caratteristiche c2 on c.caratteristica = c2.id where p.id = :id", [':id' => $product->id]);
-                $product->caratteristiche = $caratteristiche;
-            } else {
-                $immagine = Database::select("select i.uri from immagini i inner join colori c on c.id = i.colore where c.prodotto = :prodotto limit 1;", [':prodotto' => $product->id]);
-                $product->immagine = $immagine[0]->uri;
-            }
+            $immagine = Database::select("select i.uri from immagini i inner join colori c on c.id = i.colore where c.prodotto = :prodotto limit 1;", [':prodotto' => $product->id]);
+            $product->immagine = $immagine[0]->uri;
         }
         $response['products'] = $products;
         echo json_encode($response);

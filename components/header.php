@@ -1,7 +1,6 @@
 <?php
 /**@var $nav_page */
 /**@var $main_classes */
-/**@var $title*/
 $pages = [
     "index.php" => "Homepage",
     "products.php?category=lusso" => "Orologi di lusso",
@@ -9,6 +8,7 @@ $pages = [
     "bundles.php" => "Bundle",
     "cart.php" => "Carrello",
 ];
+$title = $title ?? 'Aeternum';
 $main_classes = $main_classes ?? 'container my-4';
 $query = $_SERVER['QUERY_STRING'] == '' ? '' : '?' . $_SERVER['QUERY_STRING'];
 $curr_page = basename($_SERVER['PHP_SELF']) . $query;
