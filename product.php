@@ -1,5 +1,5 @@
 <?php include 'components/header.php'; ?>
-    <form method="get" action="action/addcart.php" class="container" id="product-form">
+    <form method="post" action="action/addcart.php" class="container" id="product-form">
     </form>
 
     <!-- Script inclusi -->

@@ -1,7 +1,7 @@
 async function loadProdotto(prodotto, parent, button = true) {
     const id = typeof(prodotto) != "object" ? prodotto : prodotto.id;
     const product = document.createElement("div");
-    product.classList = "row d-flex align-items-center justify-content-center";
+    product.classList = "row d-flex justify-content-center";
     product.innerHTML = `<div class="col-md-4 my-4">
                   <div id="p${id}-carousel" class="carousel slide" data-bs-ride="carousel">
                       <div class="carousel-inner" id="p${id}-carousel-images"></div>

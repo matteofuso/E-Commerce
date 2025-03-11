@@ -1,15 +1,104 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+include '../components/session.php';
+include '../utils/Log.php';
+include '../utils/Database.php';
+$config = include '../config.php';
+var_dump($_POST);
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrello</title>
-</head>
+function panic($error_id = -1)
+{
+    header("Location: ../cart.php?err=$error_id");
+    die();
+}
 
-<body>
-    <h1>Aspetta un attimo che organizziamo il tuo carrello</h1>
-    <script src="addCart.js"></script>
-</body>
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-</html>
+    if (Database::connect($config) == null) {
+        panic(0);
+    }
+
+    $sid = null;
+    if (!isset($_SESSION['id'])) {
+        $sid = Database::select("select s.id from sessioni s where s.session_id = :sid", [
+            'sid' => session_id()
+        ]);
+
+        if (count($sid) == 0) {
+            Database::query("insert into sessioni (session_id) values (:sid)", [
+                'sid' => session_id()
+            ]);
+            $sid = Database::connect()->lastInsertId();
+        } else {
+            $sid = $sid[0]->id;
+        }
+    }
+
+    if (!isset($_POST['bundle'])) {
+        if (!isset($_POST['id'])) {
+            panic(1);
+        }
+        $id = $_POST['id'][0];
+        $color = $_POST[$id . '-color'] ?? null;
+        $size = $_POST[$id . '-size'] ?? null;
+
+        if (empty($color) || empty($size)) {
+            panic(1);
+        }
+
+        try {
+            Database::query("insert into carrello (utente, prodotto, colore, taglia, session) values (:utente, :prodotto, :colore, :taglia, :session)", [
+                'utente' => $_SESSION['id'] ?? null,
+                'prodotto' => $id,
+                'colore' => $color,
+                'taglia' => $size,
+                'session' => $sid
+            ]);
+        } catch (Exception $e) {
+            Log::errlog($e);
+            panic(2);
+        }
+    } else {
+        $bundle = $_POST['bundle'];
+        $prodotti = $_POST['id'] ?? null;
+
+        if (empty($prodotti)) {
+            panic(1);
+        }
+
+        try{
+            Database::query("insert into carrello_bundle(bundle, utente, session) values (:bundle, :utente, :session)", [
+                'bundle' => $bundle,
+                'utente' => $_SESSION['id'] ?? null,
+                'session' => $sid
+            ]);
+            $bid = Database::connect()->lastInsertId();
+        } catch (Exception $e) {
+            Log::errlog($e);
+            panic(2);
+        }
+
+        foreach ($prodotti as $id) {
+            $color = $_POST[$id . '-color'] ?? null;
+            $size = $_POST[$id . '-size'] ?? null;
+
+            if (empty($color) || empty($size)) {
+                panic(1);
+            }
+
+            try {
+                Database::query("insert into prodotti_carello_bundle(bundle, prodotto, colore, taglia) values (:bundle, :prodotto, :colore, :taglia)", [
+                    'bundle' => $bid,
+                    'prodotto' => $id,
+                    'colore' => $color,
+                    'taglia' => $size
+                ]);
+            } catch (Exception $e) {
+                Log::errlog($e);
+                panic(2);
+            }
+        }
+    }
+    header("Location: ../cart.php");
+} else {
+    panic(1);
+}

@@ -9,6 +9,8 @@ if (isset($_GET['err'])) {
     $errors = [
         '-1' => 'Errore generico',
         '0' => 'Impossibile connettersi al database',
+        '1' => 'Richiesta non valida',
+        '2' => 'Errore durante l\'inserimento nel carrello',
     ];
     $err = $_GET['err'];
     if (!array_key_exists($err, $errors)) {

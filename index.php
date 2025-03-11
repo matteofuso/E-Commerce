@@ -1,4 +1,5 @@
 <?php $main_classes = '';
+include 'components/session.php';
 include 'components/header.php'; ?>
     <!-- Hero Section -->
     <section class="hero bg-dark text-white hero-bg mb-5">

@@ -1,5 +1,5 @@
 <?php include 'components/header.php'; ?>
-    <form method="get" action="action/addcart.php" class="container flex-column d-flex justify-content-center">
+    <form method="post" action="action/addcart.php" class="container flex-column d-flex justify-content-center">
         <h1 id="bundle-name"></h1>
         <p id="bundle-description"></p>
         <p id="bundle-price"></p>

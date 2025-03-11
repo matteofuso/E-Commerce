@@ -18,7 +18,7 @@ class Database
         return $stm->fetchAll();
     }
 
-    public static function connect(array $config, bool $reconnect = false): ?PDO
+    public static function connect(array $config = [], bool $reconnect = false): ?PDO
     {
         if (empty(self::$PDO)) {
             if (!self::$connectionFailed || $reconnect) {
