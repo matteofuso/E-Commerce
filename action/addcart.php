@@ -3,7 +3,6 @@ include '../components/session.php';
 include '../utils/Log.php';
 include '../utils/Database.php';
 $config = include '../config.php';
-var_dump($_POST);
 
 function panic($error_id = -1)
 {
@@ -46,6 +45,22 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         }
 
         try {
+            $same = Database::select("select * from carrello where prodotto = :prodotto and colore = :colore and taglia = :taglia and (session = :session or utente = :utente)", [
+                'prodotto' => $id,
+                'colore' => $color,
+                'taglia' => $size,
+                'session' => $sid ?? -1,
+                'utente' => $_SESSION['id'] ?? -1
+            ]);
+
+            if (count($same) > 0) {
+                Database::query("update carrello set quantita = quantita + 1 where id = :id", [
+                    'id' => $same[0]->id
+                ]);
+                header("Location: ../cart.php");
+                die();
+            }
+
             Database::query("insert into carrello (utente, prodotto, colore, taglia, session) values (:utente, :prodotto, :colore, :taglia, :session)", [
                 'utente' => $_SESSION['id'] ?? null,
                 'prodotto' => $id,
