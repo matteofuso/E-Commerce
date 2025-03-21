@@ -95,7 +95,7 @@ create table utenti(
                        id int primary key auto_increment,
                        nome varchar(100) not null,
                        cognome varchar(100) not null,
-                       email varchar(100) not null,
+                       email varchar(100) unique not null,
                        password char(64) not null,
                        ruolo int not null,
                        foreign key (ruolo) references ruoli(id)
@@ -145,6 +145,7 @@ create table prodotti_carello_bundle(
 create table carrello(
                          id int primary key auto_increment,
                          quantita int not null default 1,
+                         rimosso tinyint(1) not null default 0,
                          utente int,
                          session int,
                          prodotto int not null,

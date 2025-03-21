@@ -1,10 +1,4 @@
 <?php
-
-if (!Database::isConnected())
-{
-    $_GET['err'] = '0';
-}
-
 if (isset($_GET['err'])) {
     $errors = [
         '-1' => 'Errore generico',

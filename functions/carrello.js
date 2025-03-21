@@ -22,6 +22,7 @@ function updateQuantity(id, element) {
     const formData = new URLSearchParams();
     formData.append('id', id);
     formData.append('quantity', value);
+    formData.append('resource', 'orologio');
 
     // Send POST request to update quantity in the database
     fetch('action/editquantity.php', {
@@ -42,6 +43,18 @@ function removeItem(id) {
     modal = new bootstrap.Modal(document.getElementById("deleteForm"));
     modal.show();
     document.getElementById("deleteFormId").value = id;
+    document.getElementById('resource').value = 'orologio';
+    document.getElementById('deleteFormTitle').innerHTML = 'Vuoi rimuovere l\'orologio?';
+    document.getElementById('deleteFormText').innerHTML = 'Sei sicuro di voler rimuovere l\'oggetto dal carrello?';
+}
+
+function removeBundle(id) {
+    modal = new bootstrap.Modal(document.getElementById("deleteForm"));
+    modal.show();
+    document.getElementById("deleteFormId").value = id;
+    document.getElementById('resource').value = 'bundle';
+    document.getElementById('deleteFormTitle').innerHTML = 'Vuoi rimuovere il bundle?';
+    document.getElementById('deleteFormText').innerHTML = 'Sei sicuro di voler rimuovere il bundle dal carrello?';
 }
 
 async function applyDiscount() {
@@ -75,92 +88,6 @@ async function applyDiscount() {
         alert("Codice sconto non valido.");
     }
 }
-
-// async function loadBundles(cart, bundleContainer) {
-//     const data = await fetchJSON("data/bundles.json");
-//     let totalPrice = 0;
-//
-//     // Verifica se ci sono bundle nel carrello
-//     const hasBundles = cart.some((item) => item.id.startsWith("b"));
-//
-//     if (hasBundles) {
-//         // Aggiungi un header per la sezione bundle
-//         bundleContainer.innerHTML = `
-//       <div class="card mb-4 w-100 px-0">
-//         <div class="card-header bg-primary text-white">
-//           <h4 class="mb-0">I tuoi Bundle</h4>
-//         </div>
-//         <div class="card-body" id="bundles-list"></div>
-//       </div>
-//     `;
-//
-//         const bundlesList = document.getElementById("bundles-list");
-//
-//         for (let i = 0; i < cart.length; i++) {
-//             if (cart[i].id.startsWith("b")) {
-//                 const bundle = data.find((b) => b.id === cart[i].id);
-//
-//                 // Crea una card per ogni bundle
-//                 const bundleCard = document.createElement("div");
-//                 bundleCard.classList.add("card", "mb-3", "shadow-sm");
-//
-//                 // Intestazione del bundle con nome e pulsante di rimozione
-//                 bundleCard.innerHTML = `
-//           <div class="card-header d-flex justify-content-between align-items-center">
-//             <h5 class="mb-0">${bundle.name}</h5>
-//             <button class="btn btn-outline-danger btn-sm" onclick="removeItem('${
-//                     cart[i].id
-//                 }')">
-//               <i class="bi bi-trash"></i> Rimuovi
-//             </button>
-//           </div>
-//           <div class="card-body">
-//             <p class="card-text mb-3">${bundle.description}</p>
-//             <div class="table-responsive">
-//               <table class="table table-striped table-hover">
-//                 <thead>
-//                   <tr>
-//                     <th>Prodotto</th>
-//                     <th>Colore</th>
-//                     <th>Taglia</th>
-//                     <th class="text-end">Prezzo</th>
-//                   </tr>
-//                 </thead>
-//                 <tbody id="bundle-${i}-products"></tbody>
-//               </table>
-//             </div>
-//             <div class="d-flex justify-content-end align-items-center gap-2 mt-3">
-//               <div class="badge bg-success p-2 fs-6">Risparmi ${(
-//                     (await loadProducts(
-//                         cart[i].products,
-//                         document.createElement("div"),
-//                         true
-//                     )) - parseFloat(bundle.price)
-//                 ).toFixed(2)}€</div>
-//               <div class="fs-5 fw-bold ms-2">€${parseFloat(
-//                     bundle.price
-//                 ).toFixed(2)}</div>
-//             </div>
-//           </div>
-//         `;
-//
-//                 bundlesList.appendChild(bundleCard);
-//
-//                 // Carica i prodotti all'interno del bundle
-//                 const bundleProductsTable = document.getElementById(
-//                     `bundle-${i}-products`
-//                 );
-//                 await loadProducts(cart[i].products, bundleProductsTable, true);
-//
-//                 totalPrice += parseFloat(bundle.price);
-//             }
-//         }
-//     } else {
-//         bundleContainer.innerHTML = "";
-//     }
-//
-//     return totalPrice;
-// }
 
 function checkout() {
     alert("Grazie per il tuo acquisto!");

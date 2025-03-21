@@ -1,8 +1,11 @@
 <?php
-include '../components/session.php';
-include '../utils/Log.php';
-include '../utils/Database.php';
+include '../utils/Session.php';
+include_once '../utils/Log.php';
+include_once '../utils/Database.php';
+include_once '../utils/Token.php';
 $config = include '../config.php';
+
+Session::start($config);
 
 function panic($error_id = -1, $redirect = true)
 {
@@ -18,9 +21,10 @@ function panic($error_id = -1, $redirect = true)
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $quantity = $_POST['quantity'] ?? -1;
     $id = $_POST['id'] ?? null;
-    $redirect = $_POST['redirect'] ?? false;
+    $resource = $_POST['resource'] ?? null;
+    $redirect = $_POST['redirect'] ?? true;
 
-    if ($quantity < 0 || empty($id)) {
+    if ($quantity < 0 || empty($id) || empty($resource)) {
         panic(1, $redirect);
     }
 
@@ -28,33 +32,44 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         panic(0, $redirect);
     }
 
-    $sid = null;
+    $tid = null;
     if (!isset($_SESSION['id'])) {
-        $sid = Database::select("select s.id from sessioni s where s.session_id = :sid", [
-            'sid' => session_id()
-        ]);
-
-        if (count($sid) == 0) {
-            Database::query("insert into sessioni (session_id) values (:sid)", [
-                'sid' => session_id()
-            ]);
-            $sid = Database::connect()->lastInsertId();
-        } else {
-            $sid = $sid[0]->id;
+        $tid = Token::fetchDatabase($config, $_COOKIE['AEToken']);
+        if (!$tid) {
+            panic(2);
         }
     }
 
-    try {
-        Database::query("update carrello set quantita = :quantity where (utente = :utente or session = :session) and id = :id", [
-            'quantity' => $quantity,
-            'id' => $_POST['id'],
-            'utente' => $_SESSION['id'] ?? -1,
-            'session' => $sid ?? -1
-        ]);
-    } catch (Exception $e) {
-        Log::errlog($e);
-        panic(2, $redirect);
+    if ($resource == 'orologio') {
+        try {
+            Database::query("update carrello set quantita = :quantity where (utente = :utente or token = :token) and id = :id", [
+                'quantity' => $quantity,
+                'id' => $_POST['id'],
+                'utente' => $_SESSION['id'] ?? -1,
+                'token' => $tid ?? -1
+            ]);
+        } catch (Exception $e) {
+            Log::errlog($e);
+            panic(2, $redirect);
+        }
+        if ($redirect) {
+            header("Location: ../cart.php");
+        }
+    } else if ($resource == 'bundle') {
+        try {
+            Database::query("update carrello_bundle set rimosso = 1 where (utente = :utente or token = :token) and id = :id", [
+                'id' => $_POST['id'],
+                'utente' => $_SESSION['id'] ?? -1,
+                'token' => $tid ?? -1
+            ]);
+        } catch (Exception $e) {
+            Log::errlog($e);
+            panic(22, $redirect);
+        }
+    } else {
+        panic(1, $redirect);
     }
+
     if ($redirect) {
         header("Location: ../cart.php");
     }

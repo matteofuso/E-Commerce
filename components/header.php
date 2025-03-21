@@ -1,6 +1,9 @@
 <?php
 /**@var $nav_page */
 /**@var $main_classes */
+require_once 'utils/Session.php';
+$config = include 'config.php';
+Session::start($config);
 $pages = [
     "index.php" => "Homepage",
     "products.php?category=lusso" => "Orologi di lusso",
@@ -35,7 +38,44 @@ $curr_page = basename($_SERVER['PHP_SELF']) . $query;
             <img src="images/logo.png" alt="Aeternum Logo" class="logo me-3" height="100px">
             <span class="logo-text h1 my-0 d-none d-sm-block">Aeternum</span>
         </a>
-        <div class="d-flex">
+        <div class="d-flex align-items-center">
+            <!-- Login/Account Button with Dropdown -->
+            <?php if(isset($_SESSION['nome'])): ?>
+                <!-- User is logged in - show dropdown -->
+                <div class="dropdown mx-3">
+                    <button class="btn btn-bd-primary bg-primary dropdown-toggle"
+                            type="button" id="userDropdown" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                        <i class="bi bi-person"></i>
+                        <span class="ms-1 d-none d-md-inline"><?= $_SESSION['nome'] ?></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow py-0" aria-labelledby="userDropdown">
+                        <li>
+                            <a class="dropdown-item d-flex align-baseline py-2 rounded-top" href="account.php">
+                                <i class="bi bi-person-circle me-2"></i>
+                                Account
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider my-0"></li>
+                        <li>
+                            <form action="action/logout.php" method="post">
+                                <input type="hidden" name="referer" value="<?= $_SERVER['PHP_SELF'] ?>">
+                                <button type="submit" class="dropdown-item d-flex align-baseline py-2 rounded-bottom">
+                                    <i class="bi bi-box-arrow-right me-2"></i>
+                                    Logout
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            <?php else: ?>
+                <!-- User is not logged in - show login button -->
+                <a href="login.php?ref=<?= urlencode($_SERVER['REQUEST_URI'])?>"
+                   class="btn btn-bd-primary bg-primary mx-3 text-white text-decoration-none d-flex align-baseline">
+                    <i class="bi bi-person me-2"></i>
+                    <span>Login</span>
+                </a>
+            <?php endif; ?>
             <div class="dropdown bd-mode-toggle">
                 <button class="btn btn-bd-primary py-2 dropdown-toggle" id="bd-theme"
                         type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (dark)">

@@ -1,8 +1,11 @@
 <?php
-include '../components/session.php';
-include '../utils/Log.php';
-include '../utils/Database.php';
+include '../utils/Session.php';
+include_once '../utils/Log.php';
+include_once '../utils/Database.php';
+include_once '../utils/Token.php';
 $config = include '../config.php';
+
+Session::start($config);
 
 function panic($error_id = -1)
 {
@@ -16,19 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         panic(0);
     }
 
-    $sid = null;
+    $tid = null;
     if (!isset($_SESSION['id'])) {
-        $sid = Database::select("select s.id from sessioni s where s.session_id = :sid", [
-            'sid' => session_id()
-        ]);
-
-        if (count($sid) == 0) {
-            Database::query("insert into sessioni (session_id) values (:sid)", [
-                'sid' => session_id()
-            ]);
-            $sid = Database::connect()->lastInsertId();
-        } else {
-            $sid = $sid[0]->id;
+        $tid = Token::fetchDatabase($config, $_COOKIE['AEToken']);
+        if (!$tid) {
+            panic(2);
         }
     }
 
@@ -45,11 +40,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         }
 
         try {
-            $same = Database::select("select * from carrello where prodotto = :prodotto and colore = :colore and taglia = :taglia and (session = :session or utente = :utente)", [
+            $same = Database::select("select * from carrello where prodotto = :prodotto and colore = :colore and taglia = :taglia and (token = :token or utente = :utente)", [
                 'prodotto' => $id,
                 'colore' => $color,
                 'taglia' => $size,
-                'session' => $sid ?? -1,
+                'token' => $tid ?? -1,
                 'utente' => $_SESSION['id'] ?? -1
             ]);
 
@@ -61,12 +56,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 die();
             }
 
-            Database::query("insert into carrello (utente, prodotto, colore, taglia, session) values (:utente, :prodotto, :colore, :taglia, :session)", [
+            Database::query("insert into carrello (utente, prodotto, colore, taglia, token) values (:utente, :prodotto, :colore, :taglia, :token)", [
                 'utente' => $_SESSION['id'] ?? null,
                 'prodotto' => $id,
                 'colore' => $color,
                 'taglia' => $size,
-                'session' => $sid
+                'token' => $tid
             ]);
         } catch (Exception $e) {
             Log::errlog($e);
@@ -81,10 +76,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         }
 
         try{
-            Database::query("insert into carrello_bundle(bundle, utente, session) values (:bundle, :utente, :session)", [
+            Database::query("insert into carrello_bundle(bundle, utente, token) values (:bundle, :utente, :token)", [
                 'bundle' => $bundle,
                 'utente' => $_SESSION['id'] ?? null,
-                'session' => $sid
+                'token' => $tid
             ]);
             $bid = Database::connect()->lastInsertId();
         } catch (Exception $e) {

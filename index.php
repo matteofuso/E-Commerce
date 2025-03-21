@@ -1,6 +1,4 @@
-<?php $main_classes = '';
-include 'components/session.php';
-include 'components/header.php'; ?>
+<?php $main_classes = ''; include 'components/header.php'; ?>
     <!-- Hero Section -->
     <section class="hero bg-dark text-white hero-bg mb-5">
         <div class="text-center hero-opacity py-5">
